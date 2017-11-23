@@ -1,0 +1,46 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["prettier", "plugin:react/recommended"],
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "jest": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "rules": {
+        "key-spacing": 0,
+        "react/prefer-es6-class": 1,
+        "react/no-multi-comp": 1,
+        "react/sort-comp": 0,
+        "react/prefer-stateless-function": 1,
+        "react/prop-types": 0,
+        "func-names": 0,
+        "object-shorthand": 2,
+        "no-param-reassign": 0,
+        "no-restricted-syntax": 0,
+        "prefer-const": 1,
+        "prefer-template": 1,
+        "guard-for-in": 1,
+        "max-len": [2, 150],
+        "no-unused-vars": [2, {
+          "args": "none"
+        }],
+        "no-underscore-dangle": 0,
+        "no-return-assign": 1,
+        "no-confusing-arrow": 1,
+        "no-loop-func": 1,
+        "prefer-arrow-callback": 1,
+        "arrow-body-style": ["warn", "as-needed"]
+    }
+}
