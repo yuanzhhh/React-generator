@@ -18,6 +18,10 @@
     "eslint": "^4.11.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "stylelint": "^8.2.0",
+    "stylelint-config-standard": "^17.0.0",
+    "stylelint-order": "^0.7.0",
+    "stylelint-scss": "^2.1.0",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   }

@@ -1,0 +1,77 @@
+{
+    "extends": "stylelint-config-standard",
+    "plugins": [
+      "stylelint-order",
+      "stylelint-scss"
+    ],
+    "rules": {
+      "at-rule-empty-line-before": [ "always", {
+        "except": [
+          "blockless-after-same-name-blockless",
+          "first-nested"
+        ],
+        "ignore": ["after-comment"],
+        "ignoreAtRules": ["else"]
+      }],
+      "block-closing-brace-newline-after": [ "always", {
+        "ignoreAtRules": ["if", "else"]
+      }],
+  
+      "color-named": "never",
+      "font-family-name-quotes": "always-where-recommended",
+      "function-url-quotes": "always",
+      "number-leading-zero": "never",
+      "string-quotes": "double",
+      "value-keyword-case": "lower",
+      "value-no-vendor-prefix": true,
+      "property-no-vendor-prefix": true,
+      "declaration-property-unit-whitelist": {
+        "/^(transition|animation)/": ["s"]
+      },
+      "selector-attribute-quotes": "always",
+      "selector-max-compound-selectors": 3,
+      "selector-no-qualifying-type": true,
+      "selector-no-vendor-prefix": true,
+      "at-rule-blacklist": ["extend"],
+      "max-empty-lines": 2,
+      "max-nesting-depth": 3,
+      "no-duplicate-selectors": true,
+  
+      "scss/at-else-empty-line-before": "never",
+      "scss/at-extend-no-missing-placeholder": true,
+      "scss/at-import-no-partial-leading-underscore": true,
+      "scss/dollar-variable-colon-newline-after": "always-multi-line",
+      "scss/dollar-variable-colon-space-after": "always-single-line",
+      "scss/dollar-variable-colon-space-before": "never",
+      "scss/dollar-variable-empty-line-before": [ "always", {
+        "except": ["after-dollar-variable", "first-nested"],
+        "ignore": ["after-comment"]
+      }],
+      "scss/dollar-variable-no-missing-interpolation": true,
+      "scss/double-slash-comment-whitespace-inside": "always",
+      "scss/declaration-nested-properties": "never",
+      "scss/operator-no-unspaced": true,
+      "scss/selector-no-redundant-nesting-selector": true,
+  
+      "order/order": [
+        "custom-properties",
+        "dollar-variables",
+        {
+          "type": "at-rule",
+          "name": "extend"
+        },
+        {
+          "type": "at-rule",
+          "name": "include"
+        },
+        "declarations",
+        "at-rules",
+        "rules",
+        {
+          "type": "at-rule",
+          "name": "media"
+        }
+      ]
+    }
+  }
+  
