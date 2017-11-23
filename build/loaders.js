@@ -1,4 +1,3 @@
-
 const ExtractTextPlugin = reuqire('extract-text-webpack-plugin');
 const autoprefixer = reuqire('autoprefixer');
 
@@ -18,27 +17,26 @@ const eslint = {
 const postCSSLoader = {
     loader: 'postcss-loader',
     options: {
-      sourceMap: true,
-      plugins: [
-        autoprefixer({ browsers: ['Safari > 1'] }),
-      ],
+        sourceMap: true,
+        plugins: [
+            autoprefixer({
+                browsers: ['Safari > 1']
+            }),
+        ],
     }
 };
 
 const styles = __DEV__ => {
-   return { 
+    return {
         scss: {
             test: /\.(scss|sass)$/,
-            use: __DEV__ ?
-            ['style-loader', 'css-loader', postCSSLoader, 'sass-loader'] :
-            ExtractTextPlugin.extract({
+            use: __DEV__ ? ['style-loader', 'css-loader', postCSSLoader, 'sass-loader'] : ExtractTextPlugin.extract({
                 use: ['css-loader', postCSSLoader, 'sass-loader']
             })
         },
         css: {
             test: /\.css$/,
-            loader: __DEV__ ? ['style-loader', 'css-loader'] :
-            ExtractTextPlugin.extract({
+            loader: __DEV__ ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({
                 use: ['css-loader', postCSSLoader]
             })
         }
@@ -57,15 +55,15 @@ const assets = () => {
             test: /\.(png|jpe?g|gif|svg)$/,
             loader: 'url-loader',
             query: {
-              limit: 8192, // 10KB 以下使用 base64
-              name: 'asset/img/[name]-[hash].[ext]'
+                limit: 8192, // 10KB 以下使用 base64
+                name: 'asset/img/[name]-[hash].[ext]'
             }
         },
         typeface: {
             test: /\.(woff2?|eot|ttf|otf)$/,
             query: {
-              limit: 8192, // 10KB 以下使用 base64
-              name: 'asset/fonts/[name]-[hash].[ext]'
+                limit: 8192, // 10KB 以下使用 base64
+                name: 'asset/fonts/[name]-[hash].[ext]'
             }
         }
     }
