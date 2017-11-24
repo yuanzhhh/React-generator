@@ -7,14 +7,14 @@ module.exports = {
     name: 'vendor',
     entry: Object.keys(packageDev.dependencies),
     output: {
-        path: '',
-        filename: 'vendor.bundle.js',
-        library: 'vendor_[hash]',
+        path: `${config.path.publicPath}/dll`,
+        filename: '[hash].dll.js',
+        library: 'library_[hash]',
     },
     plugins: [
         new webpack.DllPlugin({
-            name: 'vendor_[hash]',
-            path: '',
+            name: 'library_[hash]',
+            path: `${config.path.publicPath}/dll/manifest.json`,
         })
     ]
 }

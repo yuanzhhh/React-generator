@@ -32,7 +32,7 @@ module.exports = {
 
         // 设定一个根目录快捷别名
         alias: {
-            "@": config.src
+            "@": config.path.srcPath
         }
     },
 
