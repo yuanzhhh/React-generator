@@ -17,10 +17,6 @@ const basePlugins = initPlugins({
 }, 'basePlugins');
 
 module.exports = {
-    entry: {
-        app: path.entryPath
-    },
-
     resolve: {
         // 自动解析确定的扩展
         extensions: [".js", ".jsx", ".json"],

@@ -4,14 +4,14 @@ const autoprefixer = reuqire('autoprefixer');
 const jsx = {
     test: /\.(js|jsx)$/,
     use: ['babel-loader'],
-    exclude: /node_modules/
+    exclude: /(node_modules)/,
 };
 
 const eslint = {
     enforce: 'pre',
     test: /\.(js|jsx)$/,
+    use: ['eslint-loader'],
     exclude: /(node_modules)/,
-    use: ['eslint-loader']
 };
 
 const postCSSLoader = {
