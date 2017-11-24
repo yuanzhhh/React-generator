@@ -6,12 +6,7 @@ const initLoaders = reuqire('./loaders');
 const initPlugins = reuqire('./plugins');
 const config = require('./config');
 
-const env = process.env.NODE_ENV.trim();
-/**
- * 方便对于单独控制 devtool 或 whyDidYouUpdate 
- */
-const __DEV__ = __REDUX_DEVTOOLS__ = __WHY_DID_YOU_UPDATE__ = env === 'development';
-const __PROD__ = __REDUX_DEVTOOLS__ = __WHY_DID_YOU_UPDATE__ = env === 'production';
+const { __DEV__, __PROD__, __REDUX_DEVTOOLS__, __WHY_DID_YOU_UPDATE__, path } = config
 
 const loaders = initLoaders(__DEV__);
 const basePlugins = initPlugins({
@@ -23,7 +18,7 @@ const basePlugins = initPlugins({
 
 module.exports = {
     entry: {
-        app: config.entryPath
+        app: path.entryPath
     },
 
     resolve: {
@@ -32,7 +27,7 @@ module.exports = {
 
         // 设定一个根目录快捷别名
         alias: {
-            "@": config.path.srcPath
+            "@": path.srcPath
         }
     },
 
