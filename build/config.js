@@ -26,6 +26,9 @@ module.exports = {
 
         // 入口文件
         entryPath: ENTRY_PATH,
+
+        // webpack dll路径
+        dllPath: `${PUBLIC_PATH}/dll`
     },
 
     // 开发模式下配置

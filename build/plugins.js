@@ -31,7 +31,7 @@ const plugins = {
         new webpack.NamedModulesPlugin(),
 
         new webpack.DllReferencePlugin({
-            manifest: path.resolve(__dirname, './dll/manifest.json'),
+            manifest: `${config.path.dllPath}/manifest.json`,
         }),
 
         new BrowserSyncPlugin({
