@@ -1,5 +1,5 @@
-const ExtractTextPlugin = reuqire('extract-text-webpack-plugin');
-const autoprefixer = reuqire('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const jsx = {
     test: /\.(js|jsx)$/,

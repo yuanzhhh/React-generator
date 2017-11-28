@@ -1,7 +1,7 @@
 const path = require('path');
 
-const initLoaders = reuqire('./loaders');
-const initPlugins = reuqire('./plugins');
+const initLoaders = require('./loaders');
+const initPlugins = require('./plugins');
 
 const env = process.env.NODE_ENV.trim();
 /**
@@ -10,10 +10,11 @@ const env = process.env.NODE_ENV.trim();
 const __DEV__ = __REDUX_DEVTOOLS__ = __WHY_DID_YOU_UPDATE__ = env === 'development';
 const __PROD__ = __REDUX_DEVTOOLS__ = __WHY_DID_YOU_UPDATE__ = env === 'production';
 
-const SRC_PATH = path.resolve(__dirname, '..', 'src');
 const ROOT_PATH = path.resolve(__dirname, '..');
-const ENTRY_PATH = path.resolve(__dirname, '..', 'src', 'main.js');
-const PUBLIC_PATH = path.resolve(__dirname, '..', 'public');
+const SRC_PATH = path.resolve(ROOT_PATH, 'src');
+const ENTRY_PATH = path.resolve(ROOT_PATH, 'src', 'main.js');
+const PUBLIC_PATH = path.resolve(ROOT_PATH, 'public');
+const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 
 module.exports = {
     // 是否开发环境
@@ -49,6 +50,9 @@ module.exports = {
 
         // 入口文件
         entryPath: ENTRY_PATH,
+
+        // dist
+        distPath: DIST_PATH,
 
         // webpack dll路径
         dllPath: `${PUBLIC_PATH}/dll`

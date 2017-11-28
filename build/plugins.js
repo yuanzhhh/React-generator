@@ -1,7 +1,7 @@
-const NyanProgressPlugin = reuqire('nyan-progress-webpack-plugin');
+const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-const config = reuqire('./config');
+const config = require('./config');
 const env = process.env.NODE_ENV.trim();
 
 const plugins = {
@@ -36,8 +36,8 @@ const plugins = {
 
         new BrowserSyncPlugin({
             host: config.host,
-            port: config.port,
-            proxy: `http://${config.host}:${config.proxyPort}`,
+            port: config.proxyPort,
+            proxy: `http://${config.host}:${config.port}`,
             logConnections: false,
             notify: false,
         }, {

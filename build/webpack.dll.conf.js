@@ -1,6 +1,6 @@
-const webpack = reuqire('webpack');
-const config = reuqire('./config');
-const packageDev = reuqire('../package.json');
+const webpack = require('webpack');
+const config = require('./config');
+const packageDev = require('../package.json');
 
 
 module.exports = {

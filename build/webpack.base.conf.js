@@ -1,9 +1,9 @@
 const webpack = require('webpack');
-const path = reuqire('path');
+const path = require('path');
 
 
-const initLoaders = reuqire('./loaders');
-const initPlugins = reuqire('./plugins');
+const initLoaders = require('./loaders');
+const initPlugins = require('./plugins');
 const config = require('./config');
 
 const { __DEV__, __PROD__, __REDUX_DEVTOOLS__, __WHY_DID_YOU_UPDATE__, path } = config
