@@ -1,6 +1,4 @@
 const webpack = require('webpack');
-const path = require('path');
-
 
 const initLoaders = require('./loaders');
 const initPlugins = require('./plugins');
@@ -9,12 +7,12 @@ const config = require('./config');
 const { __DEV__, __PROD__, __REDUX_DEVTOOLS__, __WHY_DID_YOU_UPDATE__, path } = config
 
 const loaders = initLoaders(__DEV__);
-const basePlugins = initPlugins({
+const basePlugins = initPlugins('basePlugins', {
     __DEV__,
     __PROD__,
     __REDUX_DEVTOOLS__,
     __WHY_DID_YOU_UPDATE__,
-}, 'basePlugins');
+});
 
 module.exports = {
     resolve: {
@@ -28,7 +26,7 @@ module.exports = {
     },
 
     module: {
-        rules: [...loaders]
+        rules: loaders,
     },
 
     plugins: basePlugins,

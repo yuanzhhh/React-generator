@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -30,14 +32,14 @@ const plugins = {
         // 更新组件时在控制台输出组件的路径而不是数字ID
         new webpack.NamedModulesPlugin(),
 
-        new webpack.DllReferencePlugin({
-            manifest: `${config.path.dllPath}/manifest.json`,
-        }),
+        // new webpack.DllReferencePlugin({
+        //     manifest: `${config.path.dllPath}/manifest.json`,
+        // }),
 
         new BrowserSyncPlugin({
             host: config.host,
-            port: config.proxyPort,
-            proxy: `http://${config.host}:${config.port}`,
+            port: config.port,
+            proxy: `http://${config.host}:${config.proxyPort}`,
             logConnections: false,
             notify: false,
         }, {
@@ -46,4 +48,4 @@ const plugins = {
     ],
 }
 
-module.exports = (state, pluginsType) => plugins[pluginsType](state);
+module.exports = (pluginsType, state) => plugins[pluginsType](state);

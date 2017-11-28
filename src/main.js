@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Test from './components/test';
+// import Test from './components/test';
+
+const HelloMessage = () => (
+    <div>
+      Hello
+    </div>
+  );
 
 ReactDOM.render(
-    <Test/>, 
+    <HelloMessage name="Taylor" />,
     document.getElementById('root')
 );

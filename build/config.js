@@ -1,8 +1,5 @@
 const path = require('path');
 
-const initLoaders = require('./loaders');
-const initPlugins = require('./plugins');
-
 const env = process.env.NODE_ENV.trim();
 /**
  * 方便对于单独控制 devtool 或 whyDidYouUpdate 
@@ -35,7 +32,7 @@ module.exports = {
     // 代理端口
     proxyPort: 9000,
 
-    host: '127.0.0.1',
+    host: '192.168.10.98',
 
     // 路径集
     path: {

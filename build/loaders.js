@@ -1,10 +1,13 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
+const config = require('./config');
+
 const jsx = {
     test: /\.(js|jsx)$/,
     use: ['babel-loader'],
-    exclude: /(node_modules)/,
+    include: config.path.srcPath,
+    exclude: /node_modules/
 };
 
 const eslint = {
@@ -26,22 +29,20 @@ const postCSSLoader = {
     }
 };
 
-const styles = __DEV__ => {
-    return {
-        scss: {
-            test: /\.(scss|sass)$/,
-            use: __DEV__ ? ['style-loader', 'css-loader', postCSSLoader, 'sass-loader'] : ExtractTextPlugin.extract({
-                use: ['css-loader', postCSSLoader, 'sass-loader']
-            })
-        },
-        css: {
-            test: /\.css$/,
-            loader: __DEV__ ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({
-                use: ['css-loader', postCSSLoader]
-            })
-        }
+const styles = __DEV__ => [
+    {
+        test: /\.(scss|sass)$/,
+        use: __DEV__ ? ['style-loader', 'css-loader', postCSSLoader, 'sass-loader'] : ExtractTextPlugin.extract({
+            use: ['css-loader', postCSSLoader, 'sass-loader']
+        })
+    },
+    {
+        test: /\.css$/,
+        loader: __DEV__ ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({
+            use: ['css-loader', postCSSLoader]
+        })
     }
-}
+]
 
 const json = {
     test: /\.json$/,
@@ -49,32 +50,29 @@ const json = {
 }
 
 
-const assets = () => {
-    return {
-        imgs: {
-            test: /\.(png|jpe?g|gif|svg)$/,
-            loader: 'url-loader',
-            query: {
-                limit: 8192, // 10KB 以下使用 base64
-                name: 'asset/img/[name]-[hash].[ext]'
-            }
-        },
-        typeface: {
-            test: /\.(woff2?|eot|ttf|otf)$/,
-            query: {
-                limit: 8192, // 10KB 以下使用 base64
-                name: 'asset/fonts/[name]-[hash].[ext]'
-            }
+const assets = () => [
+    {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        loader: 'url-loader',
+        query: {
+            limit: 8192, // 10KB 以下使用 base64
+            name: 'asset/img/[name]-[hash].[ext]'
+        }
+    },
+    {
+        test: /\.(woff2?|eot|ttf|otf)$/,
+        loader: 'url-loader',
+        query: {
+            limit: 8192, // 10KB 以下使用 base64
+            name: 'asset/fonts/[name]-[hash].[ext]'
         }
     }
-}
+]
 
-module.exports = __DEV__ => {
-    return {
-        json,
-        jsx,
-        eslint,
-        ...styles(__DEV__),
-        ...assets(),
-    }
-}
+module.exports = __DEV__ => [
+    json,
+    jsx,
+    eslint,
+    ...(styles(__DEV__)),
+    ...(assets()),
+]
