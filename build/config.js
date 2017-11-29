@@ -14,18 +14,6 @@ const PUBLIC_PATH = path.resolve(ROOT_PATH, 'public');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 
 module.exports = {
-    // 是否开发环境
-    __DEV__,
-
-    // 是否生产环境
-    __PROD__,
-
-    // 是否启用redux工具
-    __REDUX_DEVTOOLS__,
-
-    // 是否启用whyDidYouUpdate
-    __WHY_DID_YOU_UPDATE__,
-
     // 端口
     port: 9090,
 
@@ -33,6 +21,21 @@ module.exports = {
     proxyPort: 9000,
 
     host: '192.168.10.98',
+
+    //服务状态
+    serviceState: {
+        // 是否开发环境
+        __DEV__,
+
+        // 是否生产环境
+        __PROD__,
+
+        // 是否启用redux工具
+        __REDUX_DEVTOOLS__,
+
+        // 是否启用whyDidYouUpdate
+        __WHY_DID_YOU_UPDATE__,
+    },
 
     // 路径集
     path: {

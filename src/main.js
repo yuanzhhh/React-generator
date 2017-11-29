@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
-// import Test from './components/test';
+import App from './components/test';
 
-const HelloMessage = () => (
-    <div>
-      Hello
-    </div>
-  );
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('root'),
+  )
+}
 
-ReactDOM.render(
-    <HelloMessage name="Taylor" />,
-    document.getElementById('root')
-);
+if (module.hot) {
+  module.hot.accept('./components/test', () => { render(App) })
+}
+
+render(App);

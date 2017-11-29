@@ -5,6 +5,7 @@ const config = require('./config');
 
 const jsx = {
     test: /\.(js|jsx)$/,
+    enforce: 'pre',
     use: ['babel-loader'],
     include: config.path.srcPath,
     exclude: /node_modules/
@@ -14,6 +15,7 @@ const eslint = {
     enforce: 'pre',
     test: /\.(js|jsx)$/,
     use: ['eslint-loader'],
+    include: config.path.srcPath,
     exclude: /(node_modules)/,
 };
 

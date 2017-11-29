@@ -1,6 +1,6 @@
 import React from 'react';
-import Tests from './tests';
-export default class Test extends React.Component {
+
+export default class Tests extends React.Component {
   constructor (props) {
     super(props)
   }
@@ -12,8 +12,7 @@ export default class Test extends React.Component {
   render () {
     return (
       <div>
-        aaasasdadaadasdasdasd
-        <Tests/>
+        aaasssadaasds
       </div>
     )
   }

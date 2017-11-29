@@ -1,18 +1,11 @@
-const webpack = require('webpack');
-
 const initLoaders = require('./loaders');
 const initPlugins = require('./plugins');
 const config = require('./config');
 
-const { __DEV__, __PROD__, __REDUX_DEVTOOLS__, __WHY_DID_YOU_UPDATE__, path } = config
+const { serviceState, path } = config
 
-const loaders = initLoaders(__DEV__);
-const basePlugins = initPlugins('basePlugins', {
-    __DEV__,
-    __PROD__,
-    __REDUX_DEVTOOLS__,
-    __WHY_DID_YOU_UPDATE__,
-});
+const loaders = initLoaders(serviceState.__DEV__);
+const basePlugins = initPlugins('basePlugins');
 
 module.exports = {
     resolve: {

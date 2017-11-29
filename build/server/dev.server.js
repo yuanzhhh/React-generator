@@ -9,14 +9,14 @@ const webpackConf = require('../webpack.config');
 const compilerRes = webpack(webpackConf);
 const app = express()
 
-app.use(express.static(config.path.publicPath))
-
 app.use(dev_middleware(compilerRes, {
     noInfo: true,
-    publicPath: '/'
+    publicPath: '/',
 }));
 
 app.use(hot_middleware(compilerRes));
+
+app.use('/', express.static(config.path.publicPath))
 
 app.listen(config.port, config.host, (err) => {
     err && console.log(err);
