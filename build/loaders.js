@@ -3,18 +3,18 @@ const autoprefixer = require('autoprefixer');
 
 const config = require('./config');
 
-const jsx = {
-    test: /\.(js|jsx)$/,
-    enforce: 'pre',
-    use: ['babel-loader'],
-    include: config.path.srcPath,
-    exclude: /node_modules/
-};
-
 const eslint = {
     enforce: 'pre',
     test: /\.(js|jsx)$/,
     use: ['eslint-loader'],
+    include: config.path.srcPath,
+    exclude: /(node_modules)/,
+};
+
+const happyPack = {
+    enforce: 'pre',
+    test: /\.(js|jsx)$/,
+    use: ['happypack/loader?id=scripts'],
     include: config.path.srcPath,
     exclude: /(node_modules)/,
 };
@@ -31,17 +31,20 @@ const postCSSLoader = {
     }
 };
 
-const styles = __DEV__ => [
-    {
+const styles = __DEV__ => [{
         test: /\.(scss|sass)$/,
-        use: __DEV__ ? ['style-loader', 'css-loader', postCSSLoader, 'sass-loader'] : ExtractTextPlugin.extract({
-            use: ['css-loader', postCSSLoader, 'sass-loader']
+        use: __DEV__ ?
+        ['style-loader', 'happypack/loader?id=styles_sass', postCSSLoader] :
+        ExtractTextPlugin.extract({
+            use: ['happypack/loader?id=styles_sass', postCSSLoader]
         })
     },
     {
         test: /\.css$/,
-        loader: __DEV__ ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({
-            use: ['css-loader', postCSSLoader]
+        loader: __DEV__ ? 
+        ['style-loader', 'happypack/loader?id=styles', postCSSLoader] :
+        ExtractTextPlugin.extract({
+            use: ['happypack/loader?id=styles', postCSSLoader]
         })
     }
 ]
@@ -52,8 +55,7 @@ const json = {
 }
 
 
-const assets = () => [
-    {
+const assets = () => [{
         test: /\.(png|jpe?g|gif|svg)$/,
         loader: 'url-loader',
         query: {
@@ -73,7 +75,7 @@ const assets = () => [
 
 module.exports = __DEV__ => [
     json,
-    jsx,
+    happyPack,
     eslint,
     ...(styles(__DEV__)),
     ...(assets()),

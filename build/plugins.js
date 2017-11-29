@@ -2,6 +2,7 @@ const webpack = require('webpack');
 
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const HappyPack = require('happypack');
 
 const config = require('./config');
 
@@ -18,6 +19,18 @@ const plugins = {
                 NODE_ENV: JSON.stringify(config.serviceState.__DEV__ ? 'development' : 'production'),
             },
             serviceState: config.serviceState
+        }),
+        new HappyPack({
+            id: 'scripts',
+            loaders: ['babel-loader']
+        }),
+        new HappyPack({
+            id: 'styles_sass',
+            loaders: ['css-loader', 'sass-loader']
+        }),
+        new HappyPack({
+            id: 'styles',
+            loaders: ['css-loader']
         }),
     ],
 
