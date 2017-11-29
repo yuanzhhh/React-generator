@@ -4,8 +4,8 @@ const env = process.env.NODE_ENV.trim();
 /**
  * 方便对于单独控制 devtool 或 whyDidYouUpdate 
  */
-const __DEV__ = __REDUX_DEVTOOLS__ = __WHY_DID_YOU_UPDATE__ = env === 'development';
-const __PROD__ = __REDUX_DEVTOOLS__ = __WHY_DID_YOU_UPDATE__ = env === 'production';
+const __DEV__ = (env === 'development');
+const __PROD__ = (env === 'production');
 
 const ROOT_PATH = path.resolve(__dirname, '..');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
@@ -23,18 +23,12 @@ module.exports = {
     host: '192.168.10.98',
 
     //服务状态
-    serviceState: {
+    SERVICE_STATE: {
         // 是否开发环境
         __DEV__,
 
         // 是否生产环境
         __PROD__,
-
-        // 是否启用redux工具
-        __REDUX_DEVTOOLS__,
-
-        // 是否启用whyDidYouUpdate
-        __WHY_DID_YOU_UPDATE__,
     },
 
     // 路径集

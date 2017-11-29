@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HappyPack = require('happypack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 const config = require('./config');
 
@@ -16,9 +18,9 @@ const plugins = {
         new webpack.DefinePlugin({
             'process.env': {
                 // 因为使用热加载，所以在开发状态下可能传入的环境变量为空
-                NODE_ENV: JSON.stringify(config.serviceState.__DEV__ ? 'development' : 'production'),
+                NODE_ENV: JSON.stringify(config.SERVICE_STATE.__DEV__ ? 'development' : 'production'),
             },
-            serviceState: config.serviceState
+            SERVICE_STATE: config.SERVICE_STATE,
         }),
 
         // HappyPack
@@ -42,7 +44,7 @@ const plugins = {
 
     // 开发模式下
     devPlugins: [
-        // 启用 HMR
+        // HMR
         new webpack.HotModuleReplacementPlugin(),
 
         new webpack.optimize.OccurrenceOrderPlugin(),
@@ -55,6 +57,26 @@ const plugins = {
 
         new webpack.DllReferencePlugin({
             manifest: `${config.path.dllPath}/manifest.json`,
+            context: config.path.dllPath,
+        }),
+
+        new HtmlWebpackPlugin({
+            title: '开发 || 调试',
+            filename: `index.html`,
+            template: `${config.path.srcPath}/index.html`,
+            inject: 'body',
+            hash: true,
+            // 错误反馈至页面
+            showErrors: true,
+        }),
+        
+        // html 导入 dll
+        new AddAssetHtmlPlugin({
+            filepath: `${config.path.dllPath}/vendor.dll.bundle.js`,
+            hash: true,
+
+            // 默认为true，但dll没有map文件
+            includeSourcemap: false,
         }),
 
         new BrowserSyncPlugin({

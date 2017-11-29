@@ -6,7 +6,6 @@ export default class Test extends React.Component {
   }
 
   componentWillMount () {
-    console.log('@!#');
   }
 
   render () {

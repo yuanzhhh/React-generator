@@ -2,9 +2,9 @@ const initLoaders = require('./loaders');
 const initPlugins = require('./plugins');
 const config = require('./config');
 
-const { serviceState, path } = config
+const { SERVICE_STATE, path } = config
 
-const loaders = initLoaders(serviceState.__DEV__);
+const loaders = initLoaders(SERVICE_STATE.__DEV__);
 const basePlugins = initPlugins('basePlugins');
 
 module.exports = {

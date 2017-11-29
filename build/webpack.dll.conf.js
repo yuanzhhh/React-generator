@@ -8,7 +8,7 @@ module.exports = {
     entry: Object.keys(packageDev.dependencies),
     output: {
         path: config.path.dllPath,
-        filename: 'vendor.bundle.js',
+        filename: 'vendor.dll.bundle.js',
         library: 'library_[hash]',
     },
     plugins: [

@@ -22,6 +22,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "add-asset-html-webpack-plugin": "^2.1.2",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
@@ -47,6 +48,7 @@
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "happypack": "^4.0.0",
+    "html-webpack-plugin": "^2.30.1",
     "json-loader": "^0.5.7",
     "node-sass": "^4.7.2",
     "nyan-progress-webpack-plugin": "^1.2.0",
@@ -62,10 +64,11 @@
     "webpack-dev-middleware": "^1.12.2",
     "webpack-dev-server": "^2.9.4",
     "webpack-hot-middleware": "^2.21.0",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "why-did-you-update": "^0.1.0"
   },
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.2.0"
   }
 }
