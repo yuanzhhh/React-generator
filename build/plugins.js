@@ -20,9 +20,15 @@ const plugins = {
             },
             serviceState: config.serviceState
         }),
+
+        // HappyPack
         new HappyPack({
             id: 'scripts',
             loaders: ['babel-loader']
+        }),
+        new HappyPack({
+            id: 'eslint-scripts',
+            loaders: ['eslint-loader']
         }),
         new HappyPack({
             id: 'styles_sass',
@@ -36,9 +42,6 @@ const plugins = {
 
     // 开发模式下
     devPlugins: [
-
-        new webpack.NamedModulesPlugin(),
-
         // 启用 HMR
         new webpack.HotModuleReplacementPlugin(),
 

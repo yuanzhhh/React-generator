@@ -6,12 +6,12 @@ const config = require('./config');
 const eslint = {
     enforce: 'pre',
     test: /\.(js|jsx)$/,
-    use: ['eslint-loader'],
+    use: ['happypack/loader?id=eslint-scripts'],
     include: config.path.srcPath,
     exclude: /(node_modules)/,
 };
 
-const happyPack = {
+const scripts = {
     enforce: 'pre',
     test: /\.(js|jsx)$/,
     use: ['happypack/loader?id=scripts'],
@@ -75,7 +75,7 @@ const assets = () => [{
 
 module.exports = __DEV__ => [
     json,
-    happyPack,
+    scripts,
     eslint,
     ...(styles(__DEV__)),
     ...(assets()),
