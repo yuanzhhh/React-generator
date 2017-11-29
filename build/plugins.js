@@ -81,8 +81,8 @@ const plugins = {
 
         new BrowserSyncPlugin({
             host: config.host,
-            port: config.port,
-            proxy: `http://${config.host}:${config.proxyPort}`,
+            port: config.proxyPort,
+            proxy: `http://${config.host}:${config.port}`,
             logConnections: false,
             notify: false,
         }, {

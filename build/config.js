@@ -20,7 +20,7 @@ module.exports = {
     // 代理端口
     proxyPort: 9000,
 
-    host: '192.168.10.98',
+    host: '0.0.0.0',
 
     //服务状态
     SERVICE_STATE: {
