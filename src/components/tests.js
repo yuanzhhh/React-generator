@@ -1,5 +1,6 @@
 import React from 'react';
-import './test.scss'
+import './test.scss';
+
 export default class Tests extends React.Component {
   constructor (props) {
     super(props)
@@ -12,6 +13,7 @@ export default class Tests extends React.Component {
   }
 
   componentDidMount() {
+    
     this.setState({
       test: 3,
     });
@@ -22,7 +24,7 @@ export default class Tests extends React.Component {
     return (
       <div>
         <span>
-        {test}
+        {test}{__("Hello World")}
         </span>
       </div>
     )

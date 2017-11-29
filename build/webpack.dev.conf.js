@@ -17,8 +17,8 @@ module.exports = {
 
     output: {
         path: config.path.distPath,
-        publicPath: "/",
-        filename: 'main.bundle.js'
+        publicPath: config.path.publicPath,
+        filename: '[name].bundle.js'
     },
 
     plugins: devPlugins,

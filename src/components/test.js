@@ -11,7 +11,7 @@ export default class Test extends React.Component {
   render () {
     return (
       <div>
-        aaasasdadaadasdasdasd
+        aaasasdadaadas
         <Tests/>
       </div>
     )

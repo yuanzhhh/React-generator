@@ -11,12 +11,14 @@ const app = express()
 
 app.use(dev_middleware(compilerRes, {
     noInfo: true,
-    publicPath: '/',
+    // config.path.publicPath 为 webpack 构建后的资源文件的引入地址
+    publicPath: config.path.publicPath,
 }));
 
 app.use(hot_middleware(compilerRes));
 
-app.use('/', express.static(config.path.publicPath))
+// 拦截所有 publicPath 下的访问
+app.use(config.path.publicPath, express.static(config.path.publicPath))
 
 app.listen(config.port, config.host, (err) => {
     err && console.log(err);

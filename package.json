@@ -49,6 +49,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "happypack": "^4.0.0",
     "html-webpack-plugin": "^2.30.1",
+    "i18n-webpack-plugin": "^1.0.0",
     "json-loader": "^0.5.7",
     "node-sass": "^4.7.2",
     "nyan-progress-webpack-plugin": "^1.2.0",

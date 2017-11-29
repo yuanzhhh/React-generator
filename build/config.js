@@ -10,8 +10,10 @@ const __PROD__ = (env === 'production');
 const ROOT_PATH = path.resolve(__dirname, '..');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const ENTRY_PATH = path.resolve(ROOT_PATH, 'src', 'main.js');
-const PUBLIC_PATH = path.resolve(ROOT_PATH, 'public');
+const STATIC_PATH = path.resolve(ROOT_PATH, 'static');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
+
+const PUBLIC_PATH = '/';
 
 module.exports = {
     // 端口
@@ -49,7 +51,7 @@ module.exports = {
         distPath: DIST_PATH,
 
         // webpack dll路径
-        dllPath: `${PUBLIC_PATH}/dll`
+        dllPath: `${STATIC_PATH}/dll`
     },
 
     // 开发模式下配置

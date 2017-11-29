@@ -5,6 +5,9 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const I18nPlugin = require('i18n-webpack-plugin');
+
+const cnJson = require("./languages/cn.json");
 
 const config = require('./config');
 
@@ -22,6 +25,8 @@ const plugins = {
             },
             SERVICE_STATE: config.SERVICE_STATE,
         }),
+
+        new I18nPlugin(cnJson),
 
         // HappyPack
         new HappyPack({
@@ -51,6 +56,8 @@ const plugins = {
 
         // 跳过错误输出
         new webpack.NoEmitOnErrorsPlugin(),
+        
+        new webpack.ProgressPlugin(),
 
         // 更新组件时在控制台输出组件的路径而不是数字ID
         new webpack.NamedModulesPlugin(),
