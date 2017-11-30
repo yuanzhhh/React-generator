@@ -17,7 +17,7 @@ app.use(middleware({
     dev: {
         noInfo: true,
         publicPath: config.path.publicPath,
-    }
+    },
 }));
 
 app.listen(config.port);

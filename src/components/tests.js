@@ -1,6 +1,14 @@
 import React from 'react';
 import './test.scss';
 
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
 export default class Tests extends React.Component {
   constructor (props) {
     super(props)
@@ -9,13 +17,9 @@ export default class Tests extends React.Component {
     }
   }
 
-  componentWillMount () {
-  }
-
   componentDidMount() {
-    
     this.setState({
-      test: 3,
+      test: 12,
     });
   }
 
@@ -24,8 +28,9 @@ export default class Tests extends React.Component {
     return (
       <div>
         <span>
-        {test}{__("你你你")}aasdasdasd
+        {test}{__("你你你")}
         </span>
+        <Title>测试1</Title>
       </div>
     )
   }

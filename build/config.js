@@ -26,10 +26,8 @@ module.exports = {
 
     //服务状态
     SERVICE_STATE: {
-        // 是否开发环境
         __DEV__,
 
-        // 是否生产环境
         __PROD__,
     },
 
@@ -55,15 +53,5 @@ module.exports = {
 
         // static
         static: STATIC_PATH,
-    },
-
-    // 开发模式下配置
-    dev: {
-
-    },
-
-    // 生产模式下配置
-    build: {
-
     },
 }
