@@ -51,7 +51,10 @@ module.exports = {
         distPath: DIST_PATH,
 
         // webpack dll路径
-        dllPath: `${STATIC_PATH}/dll`
+        dllPath: `${ROOT_PATH}/dll`,
+
+        // static
+        static: STATIC_PATH,
     },
 
     // 开发模式下配置

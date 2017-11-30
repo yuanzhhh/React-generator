@@ -8,6 +8,10 @@ const compilerRes = webpack(webpackConf);
 
 const app = new Koa();
 
+app.use(require('koa-static')(config.path.static), {
+    gzip: false,
+})
+
 app.use(middleware({
     compiler: compilerRes,
     dev: {
@@ -16,4 +20,4 @@ app.use(middleware({
     }
 }));
 
-app.listen(config.port, config.host);
+app.listen(config.port);

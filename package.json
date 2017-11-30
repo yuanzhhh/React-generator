@@ -44,6 +44,7 @@
     "i18n-webpack-plugin": "^1.0.0",
     "json-loader": "^0.5.7",
     "koa": "^2.4.1",
+    "koa-static": "^4.0.2",
     "koa-webpack": "^1.0.0",
     "node-sass": "^4.7.2",
     "nyan-progress-webpack-plugin": "^1.2.0",
