@@ -3,16 +3,9 @@
   "version": "1.0.0",
   "description": "wx pwa generator",
   "scripts": {
-    "start": "better-npm-run start:dev",
-    "dll": "better-npm-run start:dll"
+    "start": "better-npm-run start:dev"
   },
   "betterScripts": {
-    "start:dll": {
-      "command": "webpack --config build/webpack.dll.conf.js",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
     "start:dev": {
       "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {

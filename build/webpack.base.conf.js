@@ -12,7 +12,7 @@ module.exports = {
         // 自动解析确定的扩展
         extensions: [".js", ".jsx", ".json"],
 
-        // 设定一个根目录快捷别名
+        // 根目录别名
         alias: {
             "@": path.srcPath
         }

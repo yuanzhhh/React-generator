@@ -24,7 +24,7 @@ export default class Tests extends React.Component {
     return (
       <div>
         <span>
-        {test}{__("Hello World")}
+        {test}{__("你你你")}
         </span>
       </div>
     )

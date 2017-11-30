@@ -20,6 +20,4 @@ app.use(hot_middleware(compilerRes));
 // 拦截所有 publicPath 下的访问
 app.use(config.path.publicPath, express.static(config.path.publicPath))
 
-app.listen(config.port, config.host, (err) => {
-    err && console.log(err);
-});
+app.listen(config.port, config.host, err => (err && console.log(err)));
