@@ -30,7 +30,7 @@ export default class Tests extends React.Component {
         <span>
         {test}{__("你你你")}
         </span>
-        <Title>测试1测试1</Title>
+        <Title>测试1测试1测试1</Title>
       </div>
     )
   }
