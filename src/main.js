@@ -7,7 +7,6 @@ import App from './components/test';
 
 fastClick.attach(document.body);
 
-// 检测不必要的更新
 if (SERVICE_STATE.__DEV__) {
   const { whyDidYouUpdate } = require('why-did-you-update')
   whyDidYouUpdate(React);
