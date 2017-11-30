@@ -1,8 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import fastClick from 'fastclick'
 
 import App from './components/test';
+
+fastClick.attach(document.body);
 
 // 检测不必要的更新
 if (SERVICE_STATE.__DEV__) {

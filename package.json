@@ -64,6 +64,7 @@
     "why-did-you-update": "^0.1.0"
   },
   "dependencies": {
+    "fastclick": "^1.0.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "styled-components": "^2.2.4"
