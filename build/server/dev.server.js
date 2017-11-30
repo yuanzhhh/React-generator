@@ -10,7 +10,7 @@ const app = new Koa();
 
 app.use(require('koa-static')(config.path.static), {
     gzip: false,
-})
+});
 
 app.use(middleware({
     compiler: compilerRes,
