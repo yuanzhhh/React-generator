@@ -3,7 +3,7 @@ const initPlugins = require('./plugins');
 const devPlugins = initPlugins('devPlugins');
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     entry: {
         app: [
             'eventsource-polyfill',
