@@ -1,7 +1,7 @@
 import React from 'react';
 import Tests from './tests';
 
-// import update from 'immutability-helper';
+import update from 'immutability-helper';
 export default class Test extends React.Component {
   constructor (props) {
     super(props)
@@ -33,16 +33,16 @@ export default class Test extends React.Component {
 
         const obj = { a: 5, b: { a: 2 } };
     
-        // const a = update(obj, {b: {$set: {a: obj.b.a * 2} }});
-        // const b = update(obj, {b: {a: {$set: obj.b.a * 2 }}});
-        // const c = update(obj, {b: {$set: {a: obj.b.a * 2} }});
+        const a = update(obj, {b: {$set: {a: obj.b.a * 2} }});
+        const b = update(obj, {b: {a: {$set: obj.b.a * 2 }}});
+        const c = update(obj, {b: {$set: {a: obj.b.a * 2} }});
     
-        obj.b.a = obj.b.a * 2;
-        const a = obj;
-        obj.b.a = obj.b.a * 2;
-        const b = obj;
-        obj.b.a = obj.b.a * 2;
-        const c = obj;
+        // obj.b.a = obj.b.a * 2;
+        // const a = obj;
+        // obj.b.a = obj.b.a * 2;
+        // const b = obj;
+        // obj.b.a = obj.b.a * 2;
+        // const c = obj;
 
         console.log('a.a === b.a', a.a === b.a);
         console.log('a.b === b.b', a.b === b.b);
@@ -55,6 +55,13 @@ export default class Test extends React.Component {
         console.log('c.b === a.b', c.b === a.b);
 
         console.log(a, b, c);
+
+        const q = update(a, {b: {$set: {a: obj.b.a * 5} }});
+
+        console.log('a === q', a === q);
+        console.log('a.a === q.a', a.a === q.a);
+        console.log('a.b === q.b', a.b === q.b);
+
 
     return (
       <div>
