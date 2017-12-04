@@ -6,6 +6,7 @@ const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const I18nPlugin = require('i18n-webpack-plugin');
+const vConsolePlugin = require('vconsole-webpack-plugin'); 
 
 const cnJson = require("./languages/cn.json");
 
@@ -94,7 +95,11 @@ const plugins = {
             notify: false,
         }, {
             reload: false,
-        })
+        }),
+
+        new vConsolePlugin({
+            enable: true,
+        }),
     ],
 }
 
