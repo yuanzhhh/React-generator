@@ -79,7 +79,7 @@ const plugins = {
             showErrors: true,
         }),
         
-        // html 导入 dll
+        // html 导入 dll js
         new AddAssetHtmlPlugin({
             filepath: `${config.path.dllPath}/vendor.dll.bundle.js`,
             hash: true,
