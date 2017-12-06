@@ -33,17 +33,13 @@ const postCSSLoader = {
 
 const styles = __DEV__ => [{
         test: /\.(scss|sass)$/,
-        use: __DEV__ ?
-        ['style-loader', 'happypack/loader?id=styles_sass', postCSSLoader] :
-        ExtractTextPlugin.extract({
+        use: __DEV__ ? ['style-loader', 'happypack/loader?id=styles_sass', postCSSLoader] : ExtractTextPlugin.extract({
             use: ['happypack/loader?id=styles_sass', postCSSLoader]
         })
     },
     {
         test: /\.css$/,
-        loader: __DEV__ ? 
-        ['style-loader', 'happypack/loader?id=styles', postCSSLoader] :
-        ExtractTextPlugin.extract({
+        loader: __DEV__ ? ['style-loader', 'happypack/loader?id=styles', postCSSLoader] : ExtractTextPlugin.extract({
             use: ['happypack/loader?id=styles', postCSSLoader]
         })
     }
@@ -55,7 +51,7 @@ const json = {
 }
 
 
-const assets = () => [{
+const assets = [{
         test: /\.(png|jpe?g|gif|svg)$/,
         loader: 'url-loader',
         query: {
@@ -78,5 +74,5 @@ module.exports = __DEV__ => [
     scripts,
     eslint,
     ...(styles(__DEV__)),
-    ...(assets()),
+    ...assets,
 ]

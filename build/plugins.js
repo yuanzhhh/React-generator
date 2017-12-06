@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const I18nPlugin = require('i18n-webpack-plugin');
 const vConsolePlugin = require('vconsole-webpack-plugin'); 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const cnJson = require("./languages/cn.json");
 
