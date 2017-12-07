@@ -4,13 +4,22 @@
   "description": "wx pwa generator",
   "scripts": {
     "start": "better-npm-run start:dev",
+    "ssr": "better-npm-run start:ssr",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
   "betterScripts": {
     "start:dev": {
       "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "BUILD_TYPE": "client"
+      }
+    },
+    "start:ssr": {
+      "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "BUILD_TYPE": "ssr"
       }
     }
   },
@@ -80,9 +89,11 @@
     "immutability-helper": "^2.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-loadable": "^5.3.1",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
     "styled-components": "^2.2.4"
   },
   "config": {

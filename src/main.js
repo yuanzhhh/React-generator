@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import fastClick from 'fastclick'
+import fastClick from 'fastclick';
 
-import App from './components/test';
+import App from './App';
 
 fastClick.attach(document.body);
 
@@ -12,18 +12,32 @@ if (SERVICE_STATE.__DEV__) {
   whyDidYouUpdate(React);
 }
 
+let DOMRender = null;
+let createApp = null;
 
-const renderDom = Component => render(
+if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
+  DOMRender = hydrate;
+
+  createApp = App(window.__INIT_STATE__);
+} else if(SERVICE_STATE.__BUILD_TYPE__ === 'client') {
+  DOMRender = render;
+  
+  createApp = App();
+}
+
+const DOMRender =  SERVICE_STATE.__BUILD_TYPE__ === 'ssr' ? hydrate : render;
+
+const reactRenderDom = Component => DOMRender(
   SERVICE_STATE.__DEV__ ? (
     <AppContainer>
       <Component />
     </AppContainer>
   ) : <Component />,
   document.getElementById('root'),
-)
+);
 
-if (SERVICE_STATE.__DEV__ && module.hot) {
-  module.hot.accept('./components/test', () => { renderDom(App) })
+if (module.hot) {
+  module.hot.accept('./App', () => { reactRenderDom(createApp) });
 }
 
-renderDom(App);
+reactRenderDom(createApp);

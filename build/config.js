@@ -1,11 +1,12 @@
 const path = require('path');
+const env = process.env;
 
-const env = process.env.NODE_ENV.trim();
 /**
  * 方便对于单独控制 devtool 或 whyDidYouUpdate 
  */
-const __DEV__ = (env === 'development');
-const __PROD__ = (env === 'production');
+const __DEV__ = (env.NODE_ENV === 'development');
+const __PROD__ = (env.NODE_ENV === 'production');
+const __BUILD_TYPE__ = env.BUILD_TYPE;
 
 const ROOT_PATH = path.resolve(__dirname, '..');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
@@ -29,6 +30,8 @@ module.exports = {
         __DEV__,
 
         __PROD__,
+
+        __BUILD_TYPE__,
     },
 
     // 路径集

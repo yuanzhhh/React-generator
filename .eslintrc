@@ -21,7 +21,7 @@
     "rules": {
         "key-spacing": 0,
         "react/prefer-es6-class": 1,
-        "react/no-multi-comp": 1,
+        "react/no-multi-comp": 0,
         "react/sort-comp": 0,
         "react/prefer-stateless-function": 1,
         "react/prop-types": 0,
@@ -38,7 +38,7 @@
         }],
         "no-underscore-dangle": 0,
         "no-return-assign": 1,
-        "no-confusing-arrow": 1,
+        "no-confusing-arrow": 0,
         "no-loop-func": 1,
         "prefer-arrow-callback": 1,
         "arrow-body-style": ["warn", "as-needed"]
