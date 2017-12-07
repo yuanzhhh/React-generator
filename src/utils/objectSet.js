@@ -1,29 +1,25 @@
-var bbs = null;
-var data = {
-    a: {
-        b: {
+/**
+ * 
+ * objData 数据对象
+ * path 路径
+ * value 值
+ */
+export default (objData, path, value) => {
+    const clonObjData = Object.assign({}, objData);
 
+    Object.prototype.toString.call(path) === '[object Array]' ? path : path.split('.').reduce((obj, key, index, arrayList) => {
+        if (index === arrayList.length - 1) {
+            obj[key] = value;
+
+            return;
         }
-    }
-};
-Object.prototype.toString.call('a.b.c.d.e') === '[object Array]' ? [] : 'a.e.c.d.e'.split('.').reduce((obj, key) => {
 
-     if (Object.keys(obj).length === 0) {
-         // 不断往下建立引用地址
-         bbs = obj;
+        if (obj[key] === undefined || !Object.keys(obj).length) {
+            obj[key] = {}
+        }
 
-         bbs[key] = {};
-         
-         return bbs[key];
-     }
+        return obj[key];
+    }, clonObjData);
 
-     bbs = obj;
-     // 遇见第一个 undefined
-     if (!bbs[key]) {
-        bbs[key] = {}
-     }
-     
-     return bbs[key];
- }, data);
-
- console.log(JSON.stringify(data), '@@@@');
+    return clonObjData;
+}
