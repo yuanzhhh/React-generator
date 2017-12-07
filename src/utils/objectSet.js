@@ -1,5 +1,4 @@
 var bbs = null;
-var bsas = null;
 var data = {
     a: {
         b: {
@@ -7,7 +6,7 @@ var data = {
         }
     }
 };
-Object.prototype.toString.call('a.b.c.d.e') === '[object Array]' ? [] : 'a.b.c.d.e'.split('.').reduce((obj, key) => {
+Object.prototype.toString.call('a.b.c.d.e') === '[object Array]' ? [] : 'a.e.c.d.e'.split('.').reduce((obj, key) => {
 
      if (Object.keys(obj).length === 0) {
          // 不断往下建立引用地址
@@ -19,13 +18,12 @@ Object.prototype.toString.call('a.b.c.d.e') === '[object Array]' ? [] : 'a.b.c.d
      }
 
      bbs = obj;
-
+     // 遇见第一个 undefined
      if (!bbs[key]) {
         bbs[key] = {}
      }
-
-     bsas = bbs;
      
      return bbs[key];
  }, data);
- console.log(JSON.stringify(bsas), '@@@@');
+
+ console.log(JSON.stringify(data), '@@@@');
