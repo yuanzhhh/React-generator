@@ -32,7 +32,7 @@
         "prefer-const": 1,
         "prefer-template": 1,
         "guard-for-in": 1,
-        "max-len": [2, 150],
+        "max-len": [2, 200],
         "no-unused-vars": [2, {
           "args": "none"
         }],
