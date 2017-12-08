@@ -3,11 +3,10 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import reducers from './reducers'
-import initState from './defaultState';
 
 import { helloSaga } from './sagas';
 
-export default (state = initState) => {
+export default (state = {}) => {
 
     const composeList = [
         applyMiddleware(createSagaMiddleware(helloSaga)),
