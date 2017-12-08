@@ -25,8 +25,6 @@ if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
   createApp = App();
 }
 
-const DOMRender =  SERVICE_STATE.__BUILD_TYPE__ === 'ssr' ? hydrate : render;
-
 const reactRenderDom = Component => DOMRender(
   SERVICE_STATE.__DEV__ ? (
     <AppContainer>
