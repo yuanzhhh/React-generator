@@ -19,7 +19,7 @@ if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
   DOMRender = hydrate;
 
   createApp = App(window.__INIT_STATE__);
-} else if(SERVICE_STATE.__BUILD_TYPE__ === 'client') {
+} else if (SERVICE_STATE.__BUILD_TYPE__ === 'client') {
   DOMRender = render;
   
   createApp = App();

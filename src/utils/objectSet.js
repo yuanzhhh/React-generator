@@ -5,7 +5,7 @@
  * value 值
  */
 export default (objData, path, value) => {
-    const clonObjData = Object.assign({}, objData);
+    const cloneObjData = Object.assign({}, objData);
 
     Object.prototype.toString.call(path) === '[object Array]' ? path : path.split('.').reduce((obj, key, index, arrayList) => {
         if (index === arrayList.length - 1) {
@@ -19,7 +19,7 @@ export default (objData, path, value) => {
         }
 
         return obj[key];
-    }, clonObjData);
+    }, cloneObjData);
 
-    return clonObjData;
+    return cloneObjData;
 }
