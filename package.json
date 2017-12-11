@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "description": "wx pwa generator",
   "scripts": {
-    "start": "better-npm-run start:dev",
+    "dev": "better-npm-run start:dev",
     "ssr": "better-npm-run start:ssr",
+    "clean": "rm -rf dll dist",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
   "betterScripts": {
     "start:dev": {
-      "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
+      "command": "npm run clean && webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "client"
       }
     },
     "start:ssr": {
-      "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
+      "command": "npm run clean && webpack --watch --config build/webpack.config.js",
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "ssr"

@@ -1,6 +1,6 @@
 const config = require('./config');
 const initPlugins = require('./plugins');
-const devPlugins = initPlugins('devPlugins');
+const devPlugins = initPlugins();
 
 module.exports = {
     devtool: 'source-map',

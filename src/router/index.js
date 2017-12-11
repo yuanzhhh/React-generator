@@ -16,7 +16,7 @@ const BasicRouter = () => (
         <li><Link to="/tests">tests</Link></li>
       </ul>
       <Route exact path="/" component={ Test } />
-      <Route exact path="/tests" component={ Tests } />
+      <Route path="/tests" component={ Tests } />
     </div>
   </Router>
 )

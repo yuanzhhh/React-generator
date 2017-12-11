@@ -27,7 +27,7 @@ if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
 }
 
 const reactRenderDom = Component => DOMRender(
-  SERVICE_STATE.__DEV__ ? (
+  SERVICE_STATE.__DEV__ && SERVICE_STATE.__BUILD_TYPE__ === 'client' ? (
     <AppContainer>
       <Component />
     </AppContainer>
