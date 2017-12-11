@@ -113,9 +113,9 @@ addPushPlugins(plugins['devPlugins'], [
         showErrors: true,
     }),
 
-    new vConsolePlugin({
-        enable: true,
-    }),
+    // new vConsolePlugin({
+    //     enable: true,
+    // }),
 ]);
 
 // 生产

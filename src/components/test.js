@@ -1,7 +1,6 @@
 import React from 'react';
-import Tests from './tests';
 
-import update from 'immutability-helper';
+// import update from 'immutability-helper';
 export default class Test extends React.Component {
   constructor (props) {
     super(props)
@@ -31,43 +30,42 @@ export default class Test extends React.Component {
 
   render () {
 
-        const obj = { 
-            b: {
-              a: {
-                b: 1,
-              }
-            },
-            c: {
-              b: [1,2,3],
-            }
-          };
+        // const obj = { 
+        //     b: {
+        //       a: {
+        //         b: 1,
+        //       }
+        //     },
+        //     c: {
+        //       b: [1,2,3],
+        //     }
+        //   };
     
-        const a = update(obj, {b: {$set: {a: { b:123 }} }});
-        const b = update(obj, {b: {$set: {a: { b:123 }} }});
+        // const a = update(obj, {b: {$set: {a: { b:123 }} }});
+        // const b = update(obj, {b: {$set: {a: { b:123 }} }});
 
-        const c = update(obj, {c: {b: {$push: [4, 5]} }});
+        // const c = update(obj, {c: {b: {$push: [4, 5]} }});
 
-        const d = update(c, {c: {b: {$push: [6, 7]} }});
+        // const d = update(c, {c: {b: {$push: [6, 7]} }});
 
-        // obj.b.a = { b: 123 };
-        // const a = obj;
-        // obj.b.a = { b: 123 };
-        // const b = obj;
+        // // obj.b.a = { b: 123 };
+        // // const a = obj;
+        // // obj.b.a = { b: 123 };
+        // // const b = obj;
 
-        console.log(a.b === b.b);
-        console.log(a.c === b.c);
+        // console.log(a.b === b.b);
+        // console.log(a.c === b.c);
         
-        console.log(c.b === a.b);
-        console.log(c.c === a.c);
-        console.log(c.c === a.c);
+        // console.log(c.b === a.b);
+        // console.log(c.c === a.c);
+        // console.log(c.c === a.c);
 
-        console.log(d.b === a.b);
-        console.log(d.b === c.b);
+        // console.log(d.b === a.b);
+        // console.log(d.b === c.b);
 
     return (
       <div>
-        aaasasdadaadas
-        <Tests/>
+        aaasa
       </div>
     )
   }
