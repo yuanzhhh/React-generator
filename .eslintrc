@@ -25,6 +25,7 @@
         "react/sort-comp": 0,
         "react/prefer-stateless-function": 1,
         "react/prop-types": 0,
+        "react/display-name": 0,
         "func-names": 0,
         "object-shorthand": 2,
         "no-param-reassign": 0,

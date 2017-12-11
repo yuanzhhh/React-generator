@@ -12,12 +12,12 @@ export default (state = {}) => {
     ];
     
     if (SERVICE_STATE.__DEV__) {
-        composeList.push(require('./DevTools').instrument())
+        composeList.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
     };
 
     const enhancer = compose(...composeList);
 
-    createStore(
+    return createStore(
         combineReducers(reducers),
         state,
         enhancer,

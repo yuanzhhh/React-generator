@@ -25,7 +25,7 @@ const plugins = {
                 // 因为使用热加载，所以在开发状态下可能传入的环境变量为空
                 NODE_ENV: JSON.stringify(config.SERVICE_STATE.__DEV__ ? 'development' : 'production'),
             },
-            SERVICE_STATE: config.SERVICE_STATE,
+            SERVICE_STATE: JSON.stringify(config.SERVICE_STATE),
         }),
 
         new I18nPlugin(cnJson),
@@ -99,7 +99,7 @@ const plugins = {
         }),
 
         new vConsolePlugin({
-            enable: true,
+            enable: false,
         }),
     ],
     
