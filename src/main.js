@@ -8,7 +8,8 @@ import App from './App';
 fastClick.attach(document.body);
 
 if (SERVICE_STATE.__DEV__) {
-  const { whyDidYouUpdate } = require('why-did-you-update')
+  const { whyDidYouUpdate } = require('why-did-you-update');
+
   whyDidYouUpdate(React);
 }
 
