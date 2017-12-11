@@ -3,7 +3,7 @@ import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import fastClick from 'fastclick';
 
-import App from './App';
+import CreateApp from './App';
 
 fastClick.attach(document.body);
 
@@ -14,16 +14,16 @@ if (SERVICE_STATE.__DEV__) {
 }
 
 let DOMRender = null;
-let createApp = null;
+let App = null;
 
 if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
   DOMRender = hydrate;
 
-  createApp = App(window.__INIT_STATE__);
+  App = CreateApp(window.__INIT_STATE__);
 } else if (SERVICE_STATE.__BUILD_TYPE__ === 'client') {
   DOMRender = render;
   
-  createApp = App();
+  App = CreateApp();
 }
 
 const reactRenderDom = Component => DOMRender(
@@ -36,7 +36,7 @@ const reactRenderDom = Component => DOMRender(
 );
 
 if (module.hot) {
-  module.hot.accept('./App', () => { reactRenderDom(createApp) });
+  module.hot.accept('./App', () => { reactRenderDom(App) });
 }
 
-reactRenderDom(createApp);
+reactRenderDom(App);
