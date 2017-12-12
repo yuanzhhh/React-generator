@@ -13,7 +13,7 @@ const cnJson = require("./languages/cn.json");
 const utils = require('./utils');
 const config = require('./config');
 
-const addPushPlugins = (pluginsList, newPluginsList) => newPluginsList.forEach(element => pluginsList.push(element));
+const addPushPlugins = (pluginsList, ...newPlugins) => newPlugins.forEach(element => pluginsList.push(element));
 
 const plugins = (() => {
     const basePlugins = utils.objectSet({}, 'basePlugins', []);
@@ -24,7 +24,7 @@ const plugins = (() => {
 })();
 
 // 公共
-addPushPlugins(plugins['basePlugins'], [
+addPushPlugins(plugins['basePlugins'],
     // 编译进度
     new webpack.ProgressPlugin(),
 
@@ -59,10 +59,10 @@ addPushPlugins(plugins['basePlugins'], [
         id: 'styles',
         loaders: ['css-loader']
     }),
-]);
+);
 
 if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
-    addPushPlugins(plugins['devPlugins'], [
+    addPushPlugins(plugins['devPlugins'],
         // HMR
         new webpack.HotModuleReplacementPlugin(),
 
@@ -89,11 +89,11 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
         }, {
             reload: false,
         }),
-    ]);
+    );
 }
 
 // 基础开发模式
-addPushPlugins(plugins['devPlugins'], [
+addPushPlugins(plugins['devPlugins'],
     // 🌈 进度条
     new NyanProgressPlugin(),
 
@@ -113,14 +113,14 @@ addPushPlugins(plugins['devPlugins'], [
         showErrors: true,
     }),
 
-    // new vConsolePlugin({
-    //     enable: true,
-    // }),
-]);
+    new vConsolePlugin({
+        enable: false,
+    }),
+);
 
 // 生产
-addPushPlugins(plugins['prodPlugin'], [
+addPushPlugins(plugins['prodPlugin'],
     new BundleAnalyzerPlugin(),
-]);
+);
 
 module.exports = (pluginsType = (config.SERVICE_STATE.__DEV__ ? 'devPlugins' : 'prodPlugin')) => plugins[pluginsType];
