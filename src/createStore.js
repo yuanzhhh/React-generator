@@ -12,7 +12,7 @@ export default (state = {}) => {
     ];
     
     if (SERVICE_STATE.__DEV__) {
-        composeList.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+        composeList.push(__REDUX_DEVTOOLS_EXTENSION__ || window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
     };
 
     const enhancer = compose(...composeList);
