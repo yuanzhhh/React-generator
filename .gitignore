@@ -36,6 +36,9 @@ node_modules
 # dll
 dll
 
+# dist
+dist
+
 # OSX
 .DS_Store
 
