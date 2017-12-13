@@ -2,6 +2,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
+import utils from './utils';
 import reducers from './reducers'
 import { helloSaga } from './sagas';
 
@@ -11,7 +12,7 @@ export default (state = {}) => {
         applyMiddleware(createSagaMiddleware(helloSaga)),
     ];
     
-    if (SERVICE_STATE.__DEV__) {
+    if (SERVICE_STATE.__DEV__ && utils.objectGet(window, '__REDUX_DEVTOOLS_EXTENSION__')) {
         composeList.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
     };
 
