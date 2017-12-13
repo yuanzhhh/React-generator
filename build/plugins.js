@@ -8,6 +8,8 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const I18nPlugin = require('i18n-webpack-plugin');
 const vConsolePlugin = require('vconsole-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 const cnJson = require("./languages/cn.json");
 const utils = require('./utils');
@@ -27,6 +29,9 @@ const plugins = (() => {
 addPushPlugins(plugins['basePlugins'],
     // 编译进度
     new webpack.ProgressPlugin(),
+
+    // 友好报错信息
+    new FriendlyErrorsWebpackPlugin(),
 
     // 全局变量
     new webpack.DefinePlugin({
@@ -89,6 +94,13 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
         }, {
             reload: false,
         }),
+    );
+}
+
+if (config.SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
+    addPushPlugins(plugins['devPlugins'],
+        // 生成构建清单json
+        new ManifestPlugin(),
     );
 }
 
