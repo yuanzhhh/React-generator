@@ -10,6 +10,7 @@ const vConsolePlugin = require('vconsole-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const path = require('path');
 
 const cnJson = require("./languages/cn.json");
 const utils = require('./utils');
@@ -17,6 +18,7 @@ const config = require('./config');
 
 const addPushPlugins = (pluginsList, ...newPlugins) => newPlugins.forEach(element => pluginsList.push(element));
 
+// 初始化plugins对象
 const plugins = (() => {
     const basePlugins = utils.objectSet({}, 'basePlugins', []);
     const devPlugins = utils.objectSet(basePlugins, 'devPlugins', []);
@@ -101,6 +103,15 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
     addPushPlugins(plugins['devPlugins'],
         // 生成构建清单json
         new ManifestPlugin(),
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.bundle.js',
+            // 通过获取入口依赖的所有module来匹配 是否 存在于node_modules
+            minChunks: module => module.resource &&
+            /\.js$/.test(module.resource) &&
+            module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0,
+        }),
     );
 }
 

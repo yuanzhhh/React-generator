@@ -7,6 +7,8 @@ const { SERVICE_STATE, path } = config
 const loaders = initLoaders(SERVICE_STATE.__DEV__);
 const basePlugins = initPlugins('basePlugins');
 
+const buildType = SERVICE_STATE.__BUILD_TYPE__ === 'client' ? 'web' : 'node'
+
 module.exports = {
     resolve: {
         // 自动解析确定的扩展
@@ -23,6 +25,6 @@ module.exports = {
     },
 
     plugins: basePlugins,
-
-    target: "web"
+    
+    target: buildType,
 }
