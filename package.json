@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "description": "wx pwa generator",
   "scripts": {
-    "dev": "better-npm-run start:dev",
-    "ssr": "better-npm-run start:ssr",
+    "dev": "npm run dev:client",
+    "dev:client": "better-npm-run dev:client",
+    "dev:ssr": "better-npm-run dev:ssr",
     "clean": "rm -rf dll dist",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
   "betterScripts": {
-    "start:dev": {
+    "dev:client": {
       "command": "npm run clean && webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "client"
       }
     },
-    "start:ssr": {
+    "dev:ssr": {
       "command": "npm run clean && webpack --watch --config build/webpack.config.js",
       "env": {
         "NODE_ENV": "development",
@@ -63,6 +64,7 @@
     "koa-static": "^4.0.2",
     "koa-webpack": "^1.0.0",
     "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
     "nyan-progress-webpack-plugin": "^1.2.0",
     "postcss-loader": "^2.0.9",
     "react-hot-loader": "^3.1.3",
