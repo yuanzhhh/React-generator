@@ -2,6 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const config = require('./config');
+const { SERVICE_STATE } = config
 
 const eslint = {
     enforce: 'pre',
@@ -31,15 +32,15 @@ const postCSSLoader = {
     }
 };
 
-const styles = __DEV__ => [{
+const styles = [{
         test: /\.(scss|sass)$/,
-        use: __DEV__ ? ['style-loader', 'happypack/loader?id=styles_sass', postCSSLoader] : ExtractTextPlugin.extract({
+        use: SERVICE_STATE.__DEV__ ? ['style-loader', 'happypack/loader?id=styles_sass', postCSSLoader] : ExtractTextPlugin.extract({
             use: ['happypack/loader?id=styles_sass', postCSSLoader]
         })
     },
     {
         test: /\.css$/,
-        loader: __DEV__ ? ['style-loader', 'happypack/loader?id=styles', postCSSLoader] : ExtractTextPlugin.extract({
+        loader: SERVICE_STATE.__DEV__ ? ['style-loader', 'happypack/loader?id=styles', postCSSLoader] : ExtractTextPlugin.extract({
             use: ['happypack/loader?id=styles', postCSSLoader]
         })
     }
@@ -69,10 +70,10 @@ const assets = [{
     }
 ]
 
-module.exports = __DEV__ => [
+module.exports = [
     json,
     scripts,
     eslint,
-    ...(styles(__DEV__)),
+    ...styles,
     ...assets,
 ]

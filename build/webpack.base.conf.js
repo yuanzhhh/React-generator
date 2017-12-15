@@ -1,11 +1,8 @@
-const initLoaders = require('./loaders');
-const initPlugins = require('./plugins');
+const loaders = require('./loaders');
+const basePlugins = require('./plugins')('basePlugins');
 const config = require('./config');
 
 const { SERVICE_STATE, path } = config
-
-const loaders = initLoaders(SERVICE_STATE.__DEV__);
-const basePlugins = initPlugins('basePlugins');
 
 const buildType = SERVICE_STATE.__BUILD_TYPE__ === 'client' ? 'web' : 'node'
 
