@@ -3,7 +3,6 @@ const initPlugins = require('./plugins');
 const devPlugins = initPlugins();
 
 module.exports = {
-    devtool: 'source-map',
     entry: {
         app: [
             'eventsource-polyfill',
