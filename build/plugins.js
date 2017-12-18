@@ -10,7 +10,6 @@ const vConsolePlugin = require('vconsole-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const path = require('path');
 
 const cnJson = require("./languages/cn.json");
 const utils = require('./utils');
@@ -40,6 +39,7 @@ addPushPlugins(plugins['basePlugins'],
         'process.env': {
             // 因为使用热加载，所以在开发状态下可能传入的环境变量为空
             NODE_ENV: JSON.stringify(config.SERVICE_STATE.__DEV__ ? 'development' : 'production'),
+            PORT: process.env.PORT || config.port,
         },
         SERVICE_STATE: JSON.stringify(config.SERVICE_STATE),
     }),
@@ -78,6 +78,19 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
             context: config.path.dllPath,
         }),
 
+        // 更新组件时在控制台输出组件的路径而不是数字ID
+        new webpack.NamedModulesPlugin(),
+
+        new HtmlWebpackPlugin({
+            title: '开发 || 调试',
+            filename: `index.html`,
+            template: `${config.path.srcPath}/index.html`,
+            inject: 'body',
+            hash: true,
+            // 错误反馈至页面
+            showErrors: true,
+        }),
+
         // html 导入 dll js
         new AddAssetHtmlPlugin({
             filepath: `${config.path.dllPath}/vendor.dll.bundle.js`,
@@ -101,17 +114,20 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
 
 if (config.SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
     addPushPlugins(plugins['devPlugins'],
+        // HMR
+        // new webpack.HotModuleReplacementPlugin(),
+
         // 生成构建清单json
         new ManifestPlugin(),
 
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.bundle.js',
-            // 通过获取入口依赖的所有module来匹配 是否 存在于node_modules
-            minChunks: module => module.resource &&
-            /\.js$/.test(module.resource) &&
-            module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0,
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor',
+        //     filename: 'vendor.bundle.js',
+        //     // 通过获取入口依赖的所有module来匹配 是否 存在于node_modules
+        //     minChunks: module => module.resource &&
+        //         /\.js$/.test(module.resource) &&
+        //         module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0,
+        // }),
     );
 }
 
@@ -122,19 +138,6 @@ addPushPlugins(plugins['devPlugins'],
 
     // 跳过错误输出
     new webpack.NoEmitOnErrorsPlugin(),
-
-    // 更新组件时在控制台输出组件的路径而不是数字ID
-    new webpack.NamedModulesPlugin(),
-
-    new HtmlWebpackPlugin({
-        title: '开发 || 调试',
-        filename: `index.html`,
-        template: `${config.path.srcPath}/index.html`,
-        inject: 'body',
-        hash: true,
-        // 错误反馈至页面
-        showErrors: true,
-    }),
 
     new vConsolePlugin({
         enable: false,

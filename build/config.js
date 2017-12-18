@@ -12,7 +12,9 @@ const ROOT_PATH = path.resolve(__dirname, '..');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const ENTRY_PATH = path.resolve(ROOT_PATH, 'src', 'main.js');
 const STATIC_PATH = path.resolve(ROOT_PATH, 'static');
-const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
+const DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'client');
+const SSR_PATH = path.resolve(ROOT_PATH, 'server_render', 'index.js');
+const SSR_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'server');
 
 const PUBLIC_PATH = '/';
 
@@ -56,5 +58,11 @@ module.exports = {
 
         // static
         static: STATIC_PATH,
+
+        // ssr
+        ssrPath: SSR_PATH,
+
+        // dist ssr
+        ssrDist: SSR_DIST_PATH,
     },
 }

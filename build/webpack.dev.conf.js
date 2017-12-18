@@ -1,6 +1,7 @@
 const config = require('./config');
-const initPlugins = require('./plugins');
-const devPlugins = initPlugins();
+const plugins = require('./plugins')();
+
+const { path: configPath } = config
 
 module.exports = {
     entry: {
@@ -10,15 +11,15 @@ module.exports = {
             'react-hot-loader/patch',
             'webpack-hot-middleware/client?reload=true',
             'webpack/hot/only-dev-server',
-            config.path.entryPath
+            configPath.entryPath
         ]
     },
 
     output: {
-        path: config.path.distPath,
-        publicPath: config.path.publicPath,
-        filename: '[name].bundle.js'
+        path: configPath.distPath,
+        publicPath: configPath.publicPath,
+        filename: '[name].bundle.js',
     },
 
-    plugins: devPlugins,
+    plugins,
 }

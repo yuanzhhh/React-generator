@@ -3,28 +3,37 @@
   "version": "1.0.0",
   "description": "wx pwa generator",
   "scripts": {
-    "dev": "npm run dev:client",
-    "dev:client": "better-npm-run dev:client",
-    "dev:ssr": "better-npm-run dev:ssr",
+    "dev": "npm-run-all -s clean dev:client",
+    "dev:server":"npm run clean && npm-run-all -p ssr:dev:client ssr:dev:server",
+    "dev:client":"better-npm-run dev-client",
+    "ssr:dev:client": "better-npm-run ssr-dev-client",
+    "ssr:dev:server": "better-npm-run ssr-dev-server",
     "clean": "rm -rf dll dist",
     "commit": "npm-run-all -s git-commit",
     "git-commit": "git cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
   "betterScripts": {
-    "dev:client": {
-      "command": "npm run clean && webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
+    "dev-client": {
+      "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "client"
       }
     },
-    "dev:ssr": {
-      "command": "npm run clean && webpack --watch --config build/webpack.config.js",
+    "ssr-dev-server": {
+      "command": "webpack --watch --config build/webpack.ssr.config.js",
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "ssr",
         "PORT": "10086"
+      }
+    },
+    "ssr-dev-client": {
+      "command": "webpack --watch --config build/webpack.config.js",
+      "env": {
+        "NODE_ENV": "development",
+        "BUILD_TYPE": "ssr"
       }
     }
   },
@@ -86,6 +95,7 @@
     "webpack-hot-middleware": "^2.21.0",
     "webpack-manifest-plugin": "^1.3.2",
     "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0",
     "why-did-you-update": "^0.1.0"
   },
   "dependencies": {
