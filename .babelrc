@@ -8,7 +8,8 @@
     "react-hot-loader/babel",
     "syntax-dynamic-import",
     "transform-runtime",
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    "dynamic-import-webpack"
   ],
   "env": {
     "production": {

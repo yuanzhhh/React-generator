@@ -27,8 +27,10 @@ module.exports = (ctx, next) => {
         });
     }).then(data => {
         ctx.set('Content-Type', 'text/html');
+        
+        ctx.type = 'charset=utf-8';
 
-        ctx.body = data;
+        ctx.body = renderStr;
     }, err => {
         throw err;
     });
