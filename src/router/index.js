@@ -15,7 +15,7 @@ const BasicRouter = props => (
         <li><Link to="/">index</Link></li>
         <li><Link to="/tests">tests</Link></li>
       </ul>
-      <Route path="/" component={ Test } />
+      <Route path="/" exact component={ Test } />
       <Route path="/tests" component={ Tests } />
     </div>
   </Router>
