@@ -4,8 +4,9 @@
   "description": "wx pwa generator",
   "scripts": {
     "dev": "npm-run-all -s clean dev:client",
-    "dev:server":"npm run clean && npm-run-all -p ssr:dev:client ssr:dev:server",
-    "dev:client":"better-npm-run dev-client",
+    "dev:server": "npm run clean && npm-run-all -p ssr:dev:client ssr:dev:server",
+    "node:watch": "better-npm-run watch-server-dev",
+    "dev:client": "better-npm-run dev-client",
     "ssr:dev:client": "better-npm-run ssr-dev-client",
     "ssr:dev:server": "better-npm-run ssr-dev-server",
     "clean": "rm -rf dll dist",
@@ -18,7 +19,8 @@
       "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {
         "NODE_ENV": "development",
-        "BUILD_TYPE": "client"
+        "BUILD_TYPE": "client",
+        "BUILD_PATH": "client"
       }
     },
     "ssr-dev-server": {
@@ -26,6 +28,7 @@
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "ssr",
+        "BUILD_PATH": "node",
         "PORT": "10086"
       }
     },
@@ -33,7 +36,14 @@
       "command": "webpack --watch --config build/webpack.config.js",
       "env": {
         "NODE_ENV": "development",
-        "BUILD_TYPE": "ssr"
+        "BUILD_TYPE": "ssr",
+        "BUILD_PATH": "client"
+      }
+    },
+    "watch-server-dev": {
+      "command": "node server_render/index.js",
+      "env": {
+        "NODE_ENV": "development"
       }
     }
   },
@@ -101,7 +111,9 @@
   "dependencies": {
     "axios": "^0.17.1",
     "fastclick": "^1.0.6",
+    "history": "^4.7.2",
     "immutability-helper": "^2.5.1",
+    "koa-router": "^7.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-loadable": "^5.3.1",

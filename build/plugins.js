@@ -81,16 +81,6 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
         // 更新组件时在控制台输出组件的路径而不是数字ID
         new webpack.NamedModulesPlugin(),
 
-        new HtmlWebpackPlugin({
-            title: '开发 || 调试',
-            filename: `index.html`,
-            template: `${config.path.srcPath}/index.html`,
-            inject: 'body',
-            hash: true,
-            // 错误反馈至页面
-            showErrors: true,
-        }),
-
         // html 导入 dll js
         new AddAssetHtmlPlugin({
             filepath: `${config.path.dllPath}/vendor.dll.bundle.js`,
@@ -133,6 +123,16 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
 
 // 基础开发模式
 addPushPlugins(plugins['devPlugins'],
+    new HtmlWebpackPlugin({
+        title: '开发 || 调试',
+        filename: `index.html`,
+        template: `${config.path.srcPath}/index.html`,
+        inject: 'body',
+        hash: true,
+        // 错误反馈至页面
+        showErrors: true,
+    }),
+
     // 🌈 进度条
     new NyanProgressPlugin(),
 

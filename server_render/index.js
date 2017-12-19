@@ -1,10 +1,25 @@
 const Koa = require('koa');
+
+const router = require('./router.js');
+
 const app = new Koa();
 
-console.log(process.env.NODE_ENV, '@@@@');
-// const ENV = process.env.NODE_ENV || 'development';
-const PORT = process.env.PORT || 3000;
-app.listen(PORT);
+if (process.env.NODE_ENV === 'development') {
+
+  const path = require('path');
+
+  const clientPath = path.resolve(__dirname, '..' , 'dist' , 'client');
+
+  app.use(require('koa-static')(clientPath), {
+      gzip: false,
+  });
+}
+
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
+
+app.listen(process.env.PORT || 3000);
 
 
-export default app;
+module.exports = app;

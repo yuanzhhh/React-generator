@@ -10,17 +10,19 @@ const {
 
 module.exports = merge(baseConf, {
     entry: {
-        server: configPath.ssrPath,
+        server: configPath.ssrCodePath,
     },
     devtool: 'source-map',
     output: {
         path: configPath.ssrDist,
         publicPath: configPath.publicPath,
         filename: '[name].bundle.js',
+        libraryTarget: 'commonjs2',
     },
     // 清除webpack打包后的node modules
     externals: [
         nodeExternals()
     ],
+    target: 'node',
     plugins,
 });

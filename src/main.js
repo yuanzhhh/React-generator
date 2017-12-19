@@ -2,8 +2,9 @@ import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import fastClick from 'fastclick';
+import createBrowserHistory from 'history/createBrowserHistory';
 
-import CreateApp from './App';
+import createApp from './createApp';
 
 fastClick.attach(document.body);
 
@@ -19,11 +20,11 @@ let App = null;
 if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
   DOMRender = hydrate;
 
-  App = CreateApp(window.__INIT_STATE__);
+  App = createApp(createBrowserHistory(), window.__INIT_STATE__);
 } else if (SERVICE_STATE.__BUILD_TYPE__ === 'client') {
   DOMRender = render;
   
-  App = CreateApp();
+  App = createApp(createBrowserHistory());
 }
 
 const reactRenderDom = Component => DOMRender(
@@ -36,7 +37,7 @@ const reactRenderDom = Component => DOMRender(
 );
 
 if (module.hot) {
-  module.hot.accept('./App', () => { reactRenderDom(App) });
+  module.hot.accept('./createApp', () => { reactRenderDom(App) });
 }
 
 reactRenderDom(App);

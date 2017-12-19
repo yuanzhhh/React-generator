@@ -7,13 +7,14 @@ const env = process.env;
 const __DEV__ = (env.NODE_ENV === 'development');
 const __PROD__ = (env.NODE_ENV === 'production');
 const __BUILD_TYPE__ = env.BUILD_TYPE;
+const __BUILD_PATH__ = env.BUILD_PATH;
 
 const ROOT_PATH = path.resolve(__dirname, '..');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const ENTRY_PATH = path.resolve(ROOT_PATH, 'src', 'main.js');
 const STATIC_PATH = path.resolve(ROOT_PATH, 'static');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'client');
-const SSR_PATH = path.resolve(ROOT_PATH, 'server_render', 'index.js');
+const SSR_CODE_PATH = path.resolve(ROOT_PATH, 'src', 'ssrModule.js');
 const SSR_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'server');
 
 const PUBLIC_PATH = '/';
@@ -34,6 +35,8 @@ module.exports = {
         __PROD__,
 
         __BUILD_TYPE__,
+
+        __BUILD_PATH__,
     },
 
     // 路径集
@@ -60,7 +63,7 @@ module.exports = {
         static: STATIC_PATH,
 
         // ssr
-        ssrPath: SSR_PATH,
+        ssrCodePath: SSR_CODE_PATH,
 
         // dist ssr
         ssrDist: SSR_DIST_PATH,
