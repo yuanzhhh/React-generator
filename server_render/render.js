@@ -9,7 +9,7 @@ const readFile = require('./readFile');
 const ssrModule = require(path.resolve(__dirname, '..', 'dist', 'server', 'server.bundle'));
 const htmlPath = path.resolve(__dirname, '..', 'dist', 'client', 'index.html');
 
-module.exports = async(ctx, next) => {
+module.exports = async (ctx, next) => {
     const store = ssrModule.default.createStore.default();
 
     const renderReact = ssrModule.default.createApp.default(createMemoryHistory({
@@ -18,16 +18,19 @@ module.exports = async(ctx, next) => {
         ],
     }), store);
 
-    const renderStr = ReactDOM.renderToString(renderReact());
-    const initState = JSON.stringify(store.getState());
+    const renderReactStr = ReactDOM.renderToString(renderReact());
+
+    const initStateStr = JSON.stringify(store.getState());
+
     const readHtmlStr = await readFile(htmlPath);
 
     const renderHtml = readHtmlStr
-        .replace(/<!--initState-->/g, `<script>window.__INIT_STATE__ = ${initState}</script>`)
-        .replace(/<!--reactRenderContent-->/g, renderStr);
+    .replace(/<!--initState-->/g, `<script>window.__INIT_STATE__ = ${initStateStr}</script>`)
+    .replace(/<!--reactRenderContent-->/g, renderReactStr);
 
     ctx.set('Content-Type', 'text/html');
     ctx.type = 'charset=utf-8';
+
     ctx.body = minify(renderHtml, {
         removeAttributeQuotes: true,
         collapseBooleanAttributes: true,
