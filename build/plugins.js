@@ -104,8 +104,6 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
 
 if (config.SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
     addPushPlugins(plugins['devPlugins'],
-        // HMR
-        // new webpack.HotModuleReplacementPlugin(),
 
         // 生成构建清单json
         new ManifestPlugin(),

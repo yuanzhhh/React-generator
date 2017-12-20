@@ -58,7 +58,7 @@ const assets = [{
         loader: 'url-loader',
         query: {
             limit: 8192, // 10KB 以下使用 base64
-            name: 'asset/img/[name]-[hash].[ext]'
+            name: 'assets/img/[name]-[hash].[ext]'
         }
     },
     {
@@ -66,7 +66,7 @@ const assets = [{
         loader: 'url-loader',
         query: {
             limit: 8192, // 10KB 以下使用 base64
-            name: 'asset/fonts/[name]-[hash].[ext]'
+            name: 'assets/fonts/[name]-[hash].[ext]'
         }
     }
 ]

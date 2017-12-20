@@ -4,6 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import fastClick from 'fastclick';
 import createBrowserHistory from 'history/createBrowserHistory';
 
+import createStore from './createStore';
 import createApp from './createApp';
 
 fastClick.attach(document.body);
@@ -20,7 +21,9 @@ let App = null;
 if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
   DOMRender = hydrate;
 
-  App = createApp(createBrowserHistory(), window.__INIT_STATE__);
+  const store = createStore(window.__INIT_STATE__);
+
+  App = createApp(createBrowserHistory(), store);
 } else if (SERVICE_STATE.__BUILD_TYPE__ === 'client') {
   DOMRender = render;
   

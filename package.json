@@ -43,7 +43,8 @@
     "watch-server-dev": {
       "command": "node server_render/index.js",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "PORT": "10086"
       }
     }
   },
@@ -113,6 +114,7 @@
     "axios": "^0.17.1",
     "fastclick": "^1.0.6",
     "history": "^4.7.2",
+    "html-minifier": "^3.5.7",
     "immutability-helper": "^2.5.1",
     "koa-router": "^7.3.0",
     "react": "^16.2.0",
@@ -123,8 +125,7 @@
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-saga": "^0.16.0",
-    "styled-components": "^2.2.4"
+    "redux-saga": "^0.16.0"
   },
   "config": {
     "validate-commit-msg": {
