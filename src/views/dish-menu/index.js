@@ -1,5 +1,5 @@
 import React from 'react';
-import './test.scss';
+import './dist-menu.scss';
 
 export default class Tests extends React.Component {
   constructor (props) {
