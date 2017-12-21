@@ -1,14 +1,13 @@
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import thunk from 'redux-thunk';
 
 import reducers from './reducers'
-import { helloSaga } from './sagas';
 
 export default (state = {}) => {
 
     const composeList = [
-        applyMiddleware(createSagaMiddleware(helloSaga)),
+        applyMiddleware(thunk),
     ];
 
     if (SERVICE_STATE.__DEV__ && typeof window !== 'undefined') {
