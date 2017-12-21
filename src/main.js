@@ -18,13 +18,13 @@ if (SERVICE_STATE.__DEV__) {
 let DOMRender = null;
 let App = null;
 
-if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
+if (window.__INIT_STATE__) {
   DOMRender = hydrate;
-
+  console.log('server');
   App = createApp(createBrowserHistory(), createStore(window.__INIT_STATE__));
-} else if (SERVICE_STATE.__BUILD_TYPE__ === 'client') {
+} else {
   DOMRender = render;
-  
+  console.log('client');
   App = createApp(createBrowserHistory(), createStore());
 }
 
