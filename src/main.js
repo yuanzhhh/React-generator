@@ -20,11 +20,11 @@ let App = null;
 
 if (window.__INIT_STATE__) {
   DOMRender = hydrate;
-  console.log('server');
+
   App = createApp(createBrowserHistory(), createStore(window.__INIT_STATE__));
 } else {
   DOMRender = render;
-  console.log('client');
+
   App = createApp(createBrowserHistory(), createStore());
 }
 

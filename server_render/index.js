@@ -10,7 +10,9 @@ if (process.env.NODE_ENV === 'development') {
 
   const clientPath = path.resolve(__dirname, '..' , 'dist' , 'client');
 
-  app.use(require('koa-static')(clientPath));
+  app.use(require('koa-static')(clientPath, {
+    index: false,
+  }));
 }
 
 app
