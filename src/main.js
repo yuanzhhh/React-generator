@@ -21,13 +21,11 @@ let App = null;
 if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
   DOMRender = hydrate;
 
-  const store = createStore(window.__INIT_STATE__);
-
-  App = createApp(createBrowserHistory(), store);
+  App = createApp(createBrowserHistory(), createStore(window.__INIT_STATE__));
 } else if (SERVICE_STATE.__BUILD_TYPE__ === 'client') {
   DOMRender = render;
   
-  App = createApp(createBrowserHistory());
+  App = createApp(createBrowserHistory(), createStore());
 }
 
 const reactRenderDom = Component => DOMRender(

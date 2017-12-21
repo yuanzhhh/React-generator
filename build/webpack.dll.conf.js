@@ -11,6 +11,10 @@ module.exports = {
         filename: 'vendor.dll.bundle.js',
         library: 'library_[hash]',
     },
+    node: {
+        fs: 'empty',
+        net: 'empty',
+    },
     plugins: [
         new webpack.DllPlugin({
             name: 'library_[hash]',

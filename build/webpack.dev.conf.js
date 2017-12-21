@@ -8,9 +8,9 @@ module.exports = {
         app: [
             'eventsource-polyfill',
             'babel-polyfill',
-            // 'react-hot-loader/patch',
-            // 'webpack-hot-middleware/client?reload=true',
-            // 'webpack/hot/only-dev-server',
+            'react-hot-loader/patch',
+            'webpack-hot-middleware/client?reload=true',
+            'webpack/hot/only-dev-server',
             configPath.entryPath
         ]
     },
