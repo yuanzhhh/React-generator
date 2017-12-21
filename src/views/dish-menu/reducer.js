@@ -6,7 +6,7 @@ const initState = {
 }
 
 const addDishNum = (state, action) => {
-    const newNum = state.dishNum + action.data;
+    const newNum = state.dishNum + action.payload;
 
     return update(state, {
         dishNum:{

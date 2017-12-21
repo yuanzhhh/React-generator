@@ -1,18 +1,25 @@
 const config = require('./config');
 const plugins = require('./plugins')();
 
-const { path: configPath } = config
+const {
+    path: configPath,
+    SERVICE_STATE
+} = config
 
 module.exports = {
     entry: {
         app: [
             'eventsource-polyfill',
             'babel-polyfill',
-            'react-hot-loader/patch',
-            'webpack-hot-middleware/client?reload=true',
-            'webpack/hot/only-dev-server',
-            configPath.entryPath
-        ]
+        ].concat(
+            SERVICE_STATE.__BUILD_TYPE__ === 'client' ? [
+                'react-hot-loader/patch',
+                'webpack-hot-middleware/client?reload=true',
+                'webpack/hot/only-dev-server',
+                configPath.entryPath
+            ] :
+            [configPath.entryPath]
+        )
     },
 
     output: {
