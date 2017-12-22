@@ -5,8 +5,7 @@ import {
   Link,
 } from 'react-router-dom';
 
-import Test from '../components/test';
-import DishMenu from '../views/dish-menu';
+import routers from './routers';
 
 const BasicRouter = props => (
   <Router history={props.history}>
@@ -15,8 +14,11 @@ const BasicRouter = props => (
         <li><Link to="/">index</Link></li>
         <li><Link to="/DishMenu">DishMenu</Link></li>
       </ul>
-      <Route path="/" exact component={ Test } />
-      <Route path="/DishMenu" component={ DishMenu } />
+      {
+        routers.map((item, index) => (
+          <Route key={index} {...item} />
+        ))
+      }
     </div>
   </Router>
 )

@@ -4,7 +4,7 @@
   "description": "wx pwa generator",
   "scripts": {
     "dev": "npm-run-all -s clean dev:client",
-    "dev:server": "npm run clean && npm-run-all -p ssr:dev:client ssr:dev:server",
+    "devs": "npm run clean && npm-run-all -p ssr:dev:client ssr:dev:server",
     "node:watch": "better-npm-run watch-server-dev",
     "dev:client": "better-npm-run dev-client",
     "ssr:dev:client": "better-npm-run ssr-dev-client",

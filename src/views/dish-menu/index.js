@@ -19,9 +19,7 @@ class DishMenu extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(()=>{
-      this.props.addDistNumAsync(1000);  
-    }, 3000);
+    this.props.getInitData();  
   }
 
   render () {

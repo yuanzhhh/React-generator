@@ -3,25 +3,22 @@ const addDishNum = num => dispatch => dispatch({
     payload: num,
 });
 
-
-const add = num => new Promise((resolve, reject) => {
+const asyncTestFun = () => new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve(num);
+        resolve(500);
     }, 1000);
 });
 
-const addAction = num => async dispatch => {
-    const nums = await add(num);
+const getInitData = () => async dispatch => {
+    const getData = await asyncTestFun();
 
     return dispatch({
         type: 'ADD_DISH_NUM',
-        payload: nums,
+        payload: getData,
     });
 }
 
-const addDistNumAsync = num => addAction(num);
-
 export default {
     addDishNum,
-    addDistNumAsync,
+    getInitData,
 };
