@@ -20,11 +20,12 @@ class DishMenu extends React.Component {
 
   componentDidMount() {
     this.props.getInitData();  
+
   }
 
   render () {
     const { dishNum } = this.props;
-
+    
     return (
       <div>
         <span>

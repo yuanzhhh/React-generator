@@ -5,15 +5,11 @@ const initState = {
     'dishNum': 0,
 }
 
-const addDishNum = (state, action) => {
-    const newNum = state.dishNum + action.payload;
-
-    return update(state, {
-        dishNum:{
-            $set: newNum,
-        },
-    });
-}
+const addDishNum = (state, action) => update(state, {
+    dishNum:{
+        $set: action.payload,
+    },
+});
 
 export default createReducer(initState, {
     ADD_DISH_NUM: addDishNum,

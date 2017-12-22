@@ -2,9 +2,13 @@ import Loadable from 'react-loadable';
 
 
 const loading = props => {
-    const { error } = props;
-
-    return error ? 'Error' : 'Loading...';
+    if (props.error) {
+        return 'Error';
+    } else if (props.pastDelay) {
+        return 'Loading...';
+    } else {
+        return null;
+    }
 }
 
 const LoadDishMenu = Loadable({

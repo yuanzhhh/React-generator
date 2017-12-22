@@ -2,7 +2,8 @@ const path = require('path');
 
 const createMemoryHistory = require('history').createMemoryHistory;
 const ReactDOM = require('react-dom/server');
-const minify = require('html-minifier').minify
+const minify = require('html-minifier').minify;
+const matchRoutes = require('react-router-config').matchRoutes;
 
 const readFile = require('./readFile');
 const ssrModule = require(path.resolve(__dirname, '..', 'dist', 'server', 'server.bundle'));
@@ -10,9 +11,14 @@ const ssrModule = require(path.resolve(__dirname, '..', 'dist', 'server', 'serve
 const htmlPath = path.resolve(__dirname, '..', 'dist', 'client', 'index.html');
 
 module.exports = async (ctx, next) => {
-    const store = ssrModule.default.createStore.default();
+    
+    const matchRoute = matchRoutes(ssrModule.routers, ctx.originalUrl);
+    
+    if (!matchRoute.length) return;
 
-    const renderReact = ssrModule.default.createApp.default(createMemoryHistory({
+    const store = ssrModule.createStore();
+
+    const renderReact = ssrModule.createApp(createMemoryHistory({
         initialEntries: [
             ctx.originalUrl
         ],

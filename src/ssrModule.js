@@ -1,7 +1,9 @@
-const createApp = require('./createApp');
-const createStore = require('./createStore');
+import createApp from './createApp';
+import createStore from './createStore';
+import routers from './router/routers';
 
-export default {
+export {
     createApp,
-    createStore
+    createStore,
+    routers
 }
