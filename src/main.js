@@ -3,6 +3,7 @@ import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import fastClick from 'fastclick';
 import createBrowserHistory from 'history/createBrowserHistory';
+import Loadable from 'react-loadable';
 
 import createStore from './createStore';
 import createApp from './createApp';
@@ -28,17 +29,22 @@ if (window.__INIT_STATE__) {
   App = createApp(createBrowserHistory(), createStore());
 }
 
-const reactRenderDom = Component => DOMRender(
-  SERVICE_STATE.__DEV__ && SERVICE_STATE.__BUILD_TYPE__ === 'client' ? (
+const renderComponent = Component => SERVICE_STATE.__DEV__ && SERVICE_STATE.__BUILD_TYPE__ === 'client' ? (
     <AppContainer>
       <Component />
     </AppContainer>
-  ) : <Component />,
-  document.getElementById('root'),
-);
+  ) : <Component />
+
+const reactRenderDom = Component => DOMRender(renderComponent(Component), document.getElementById('root'));
 
 if (module.hot) {
   module.hot.accept('./createApp', () => { reactRenderDom(App) });
 }
 
-reactRenderDom(App);
+if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
+  Loadable.preloadReady().then(() => {
+    reactRenderDom(App);
+  });
+} else {
+  reactRenderDom(App);
+}
