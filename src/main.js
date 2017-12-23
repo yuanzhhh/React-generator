@@ -8,6 +8,7 @@ import Loadable from 'react-loadable';
 import createStore from './createStore';
 import createApp from './createApp';
 
+// 移除click 30ms延迟
 fastClick.attach(document.body);
 
 if (SERVICE_STATE.__DEV__) {
@@ -35,18 +36,18 @@ const renderComponent = Component => SERVICE_STATE.__DEV__ && SERVICE_STATE.__BU
     </AppContainer>
   ) : <Component />
 
-const reactRenderDom = Component => DOMRender(renderComponent(Component), document.getElementById('root'));
+const reactRenderDom = Component => {
+  Loadable.preloadReady().then(() => {
+    DOMRender(renderComponent(Component), document.getElementById('root'))
+  });
+};
 
 if (module.hot) {
   module.hot.accept('./createApp', () => { reactRenderDom(App) });
 }
 
 if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
-  window.main = () => {
-    Loadable.preloadReady().then(() => {
-      reactRenderDom(App);
-    });
-  }
+  window.main = () => reactRenderDom(App);
 } else {
   reactRenderDom(App);
 }
