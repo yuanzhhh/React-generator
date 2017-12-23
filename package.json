@@ -41,7 +41,7 @@
       }
     },
     "watch-server-dev": {
-      "command": "node server_render/index.js",
+      "command": "nodemon server_render/index.js",
       "env": {
         "NODE_ENV": "development",
         "PORT": "10086"
@@ -85,6 +85,7 @@
     "json-loader": "^0.5.7",
     "koa-webpack": "^1.0.0",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.14.1",
     "npm-run-all": "^4.1.2",
     "nyan-progress-webpack-plugin": "^1.2.0",
     "postcss-loader": "^2.0.9",

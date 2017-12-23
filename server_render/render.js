@@ -30,7 +30,7 @@ module.exports = async (ctx, next) => {
     }), store, true, modules);
 
     const renderReactStr = ReactDOM.renderToString(renderReact());
-    
+
     const bundles = getBundles(stats, modules);
 
     const initStateStr = JSON.stringify(store.getState());
