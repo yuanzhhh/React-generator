@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
 const exec = require('child_process').exec; 
+const opn = require('opn');
 
 const ssrWebpackConf = require('./build/webpack.ssr.config');
 const clientWebpackConf = require('./build/webpack.config');
@@ -49,8 +50,16 @@ gulp.task('default', gulp.series(
     done => {
         exec('npm run server:watch', (err,stdout,stderr) => {
             if(err) {
-                console.log(`error : ${stderr.replace(/sh: nodemon: command not found/g, 'nodemon 未安装，执行 npm install nodemon -g')}`);
+                console.log(`error : ${stderr}`);
             }
         });
+        
+        done();
+    },
+
+    done => {
+        opn(`http://localhost:${process.env.PORT}/`);
+
+        done();
     },
 ));
