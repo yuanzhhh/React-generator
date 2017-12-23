@@ -29,7 +29,7 @@
         "NODE_ENV": "development",
         "BUILD_TYPE": "ssr",
         "BUILD_PATH": "node",
-        "PORT": "10086"
+        "PORT": "9000"
       }
     },
     "ssr-dev-client": {
