@@ -25,8 +25,8 @@ module.exports = {
     output: {
         path: configPath.distPath,
         publicPath: configPath.publicPath,
-        filename: 'assets/[name].bundle.js',
-        chunkFilename: 'assets/[id].[name].bundle.js',
+        filename: 'assets/[name].[hash].bundle.js',
+        chunkFilename: 'assets/[id].[name].[hash].bundle.js',
     },
 
     plugins,
