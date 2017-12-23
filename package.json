@@ -4,11 +4,10 @@
   "description": "wx pwa generator",
   "scripts": {
     "dev": "npm-run-all -s clean dev:client",
-    "devs": "npm run clean && npm-run-all -p ssr:dev:client ssr:dev:server",
-    "node:watch": "better-npm-run watch-server-dev",
+    "devs": "npm-run-all -s clean dev:ssr",
+    "server:watch": "better-npm-run watch-server-dev",
     "dev:client": "better-npm-run dev-client",
-    "ssr:dev:client": "better-npm-run ssr-dev-client",
-    "ssr:dev:server": "better-npm-run ssr-dev-server",
+    "dev:ssr": "better-npm-run dev-ssr",
     "clean": "rm -rf dll dist",
     "commit": "npm-run-all -s git-commit",
     "git-commit": "git cz",
@@ -19,25 +18,15 @@
       "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {
         "NODE_ENV": "development",
-        "BUILD_TYPE": "client",
-        "BUILD_PATH": "client"
+        "BUILD_TYPE": "client"
       }
     },
-    "ssr-dev-server": {
-      "command": "webpack --watch --config build/webpack.ssr.config.js",
+    "dev-ssr": {
+      "command": "gulp",
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "ssr",
-        "BUILD_PATH": "node",
         "PORT": "9000"
-      }
-    },
-    "ssr-dev-client": {
-      "command": "webpack --watch --config build/webpack.config.js",
-      "env": {
-        "NODE_ENV": "development",
-        "BUILD_TYPE": "ssr",
-        "BUILD_PATH": "client"
       }
     },
     "watch-server-dev": {
@@ -87,7 +76,6 @@
     "json-loader": "^0.5.7",
     "koa-webpack": "^1.0.0",
     "node-sass": "^4.7.2",
-    "nodemon": "^1.14.1",
     "npm-run-all": "^4.1.2",
     "nyan-progress-webpack-plugin": "^1.2.0",
     "postcss-loader": "^2.0.9",
