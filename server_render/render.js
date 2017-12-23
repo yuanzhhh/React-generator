@@ -1,14 +1,17 @@
-const path = require('path');
 
 const createMemoryHistory = require('history').createMemoryHistory;
 const ReactDOM = require('react-dom/server');
 const minify = require('html-minifier').minify;
 const matchRoutes = require('react-router-config').matchRoutes;
+const { getBundles } = require('react-loadable/webpack');
 
+const config = require('../build/config');
 const readFile = require('./readFile');
-const ssrModule = require(path.resolve(__dirname, '..', 'dist', 'server', 'server.bundle'));
 
-const htmlPath = path.resolve(__dirname, '..', 'dist', 'client', 'index.html');
+const ssrModule = require(`${config.path.ssrDist}/server.bundle`);
+const stats = require(`${config.path.distPath}/react-loadable.json`);
+
+const htmlPath = `${config.path.distPath}/index.html`;
 
 module.exports = async (ctx, next) => {
     
@@ -18,21 +21,29 @@ module.exports = async (ctx, next) => {
 
     const store = ssrModule.createStore();
 
+    const modules = [];
+
     const renderReact = ssrModule.createApp(createMemoryHistory({
         initialEntries: [
             ctx.originalUrl
         ],
-    }), store);
+    }), store, true, modules);
 
     const renderReactStr = ReactDOM.renderToString(renderReact());
+    
+    const bundles = getBundles(stats, modules);
 
     const initStateStr = JSON.stringify(store.getState());
 
     const readHtmlStr = await readFile(htmlPath);
 
     const renderHtml = readHtmlStr
-    .replace(/<!--initState-->/g, `<script>window.__INIT_STATE__ = ${initStateStr}</script>`)
-    .replace(/<!--reactRenderContent-->/g, renderReactStr);
+    .replace(/<!--initState-->/g, `<script> window.__INIT_STATE__ = ${initStateStr} </script>`)
+    .replace(/<!--reactRenderContent-->/g, renderReactStr)
+    .replace(/<\/body>/g, `
+        ${bundles.map(bundle => `<script src="/${bundle.file}"></script>`).join('\n')}
+        <script> window.main(); </script>
+    `);
     
     const miniHtml = minify(renderHtml, {
         removeAttributeQuotes: true,

@@ -13,8 +13,9 @@ const ROOT_PATH = path.resolve(__dirname, '..');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const ENTRY_PATH = path.resolve(ROOT_PATH, 'src', 'main.js');
 const STATIC_PATH = path.resolve(ROOT_PATH, 'static');
-const DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'client');
+const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 const SSR_CODE_PATH = path.resolve(ROOT_PATH, 'src', 'ssrModule.js');
+const CLIENT_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'client');
 const SSR_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'server');
 
 const PUBLIC_PATH = '/';
@@ -67,5 +68,8 @@ module.exports = {
 
         // dist ssr
         ssrDist: SSR_DIST_PATH,
+        
+        // dist client 
+        clientDist: CLIENT_DIST_PATH,
     },
 }

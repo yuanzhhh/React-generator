@@ -42,9 +42,11 @@ if (module.hot) {
 }
 
 if (SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
-  Loadable.preloadReady().then(() => {
-    reactRenderDom(App);
-  });
+  window.main = () => {
+    Loadable.preloadReady().then(() => {
+      reactRenderDom(App);
+    });
+  }
 } else {
   reactRenderDom(App);
 }

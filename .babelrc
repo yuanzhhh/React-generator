@@ -9,7 +9,8 @@
     "syntax-dynamic-import",
     "transform-runtime",
     "transform-decorators-legacy",
-    "dynamic-import-webpack"
+    "dynamic-import-webpack",
+    "react-loadable/babel"
   ],
   "env": {
     "production": {
