@@ -6,7 +6,7 @@ const addDishNum = num => dispatch => dispatch({
 const asyncTestFun = num => new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve(num);
-    }, 0);
+    }, 20);
 });
 
 const getInitData = num => async dispatch => {

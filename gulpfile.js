@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
 const opn = require('opn');
-const nodemon = require('nodemon');
+const nodemon = require('gulp-nodemon');
 
 const ssrWebpackConf = require('./build/webpack.ssr.config');
 const clientWebpackConf = require('./build/webpack.config');
@@ -50,6 +50,11 @@ gulp.task('default', gulp.series(
     done => {
         nodemon({
             script: './server_render/index.js',
+            "ignore": [
+                '*.test.js', 
+                'node_modules/*',
+                '*.map'
+            ],
         });
         
         done();
