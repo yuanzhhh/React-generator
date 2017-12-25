@@ -8,7 +8,7 @@ const { getBundles } = require('react-loadable/webpack');
 const config = require('../build/config');
 const readFile = require('./readFile');
 
-const ssrModule = require(`${config.path.ssrDist}/server.bundle`);
+const ssrModule = require(`${config.path.ssrDist}/ssr_modules.bundle`);
 const stats = require(`${config.path.distPath}/react-loadable.json`);
 
 const htmlPath = `${config.path.distPath}/index.html`;

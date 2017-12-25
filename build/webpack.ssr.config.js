@@ -10,7 +10,7 @@ const {
 
 module.exports = merge(baseConf, {
     entry: {
-        server: configPath.ssrCodePath,
+        ssr_modules: configPath.ssrCodePath,
     },
 
     devtool: 'source-map',
