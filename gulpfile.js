@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
-const exec = require('child_process').exec; 
 const opn = require('opn');
+const nodemon = require('nodemon');
 
 const ssrWebpackConf = require('./build/webpack.ssr.config');
 const clientWebpackConf = require('./build/webpack.config');
@@ -48,10 +48,8 @@ gulp.task('default', gulp.series(
     ),
 
     done => {
-        exec('npm run server:watch', (err,stdout,stderr) => {
-            if(err) {
-                console.log(`error : ${stderr}`);
-            }
+        nodemon({
+            script: './server_render/index.js',
         });
         
         done();

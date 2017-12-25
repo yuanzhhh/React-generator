@@ -1,5 +1,5 @@
 import Loadable from 'react-loadable';
-
+const dishMenuInit = require('../views/dish-menu/initDispatch');
 
 const loading = props => {
     if (props.error) {
@@ -31,5 +31,6 @@ export default [
     {
         path: '/DishMenu',
         component: LoadDishMenu,
+        init: dishMenuInit,
     },
 ]

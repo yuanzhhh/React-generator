@@ -1,5 +1,7 @@
-import { getInitData } from './dispatchToProps';
+import dispatchToProps from './dispatchToProps';
 
-export default store => {
-    store.dispatch(getInitData());
+export default async store => {
+    await store.dispatch(dispatchToProps.getInitData(599))
+    
+    await store.dispatch(dispatchToProps.getInitData(666))
 }

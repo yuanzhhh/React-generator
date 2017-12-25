@@ -20,6 +20,10 @@ module.exports = async (ctx, next) => {
     if (!matchRoute.length) return;
 
     const store = ssrModule.createStore();
+    
+    if (matchRoute[0].route.init) {
+        await matchRoute[0].route.init.default(store);
+    }
 
     const modules = [];
 

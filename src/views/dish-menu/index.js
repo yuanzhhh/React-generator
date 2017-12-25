@@ -19,8 +19,7 @@ class DishMenu extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getInitData();  
-
+    this.props.getInitData(666);  
   }
 
   render () {
