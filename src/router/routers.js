@@ -1,6 +1,6 @@
 import Loadable from 'react-loadable';
 
-import dishMenuInit from '../views/dish-menu/initDispatch';
+import dishMenuRoute from '../views/dish-menu/route';
 
 const loading = props => {
     if (props.error) {
@@ -11,11 +11,6 @@ const loading = props => {
         return null;
     }
 }
-
-const LoadDishMenu = Loadable({
-    loader: () => import('../views/dish-menu'),
-    loading,
-});
 
 const Test = Loadable({
     loader: () => import('../components/test'),
@@ -29,9 +24,5 @@ export default [
         exact: true,
         component: Test,
     },
-    {
-        path: '/DishMenu',
-        component: LoadDishMenu,
-        init: dishMenuInit,
-    },
+    dishMenuRoute,
 ]
