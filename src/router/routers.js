@@ -1,5 +1,6 @@
 import Loadable from 'react-loadable';
-const dishMenuInit = require('../views/dish-menu/initDispatch');
+
+import dishMenuInit from '../views/dish-menu/initDispatch';
 
 const loading = props => {
     if (props.error) {

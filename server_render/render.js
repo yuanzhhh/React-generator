@@ -20,9 +20,9 @@ module.exports = async (ctx, next) => {
     if (!matchRoute.length) return;
 
     const store = ssrModule.createStore();
-    
+
     if (matchRoute[0].route.init) {
-        await matchRoute[0].route.init.default(store);
+        await matchRoute[0].route.init(store);
     }
 
     const modules = [];
@@ -47,6 +47,7 @@ module.exports = async (ctx, next) => {
     .replace(/<\/body>/g, `
         ${bundles.map(bundle => `<script src="/${bundle.file}"></script>`).join('\n')}
         <script> window.main(); </script>
+        </body>
     `);
     
     const miniHtml = minify(renderHtml, {
