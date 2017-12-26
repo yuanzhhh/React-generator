@@ -10,8 +10,8 @@ export default (state = {}) => {
         applyMiddleware(thunk),
     ];
 
-    if (SERVICE_STATE.__DEV__ && typeof window !== 'undefined') {
-        composeList.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    if (SERVICE_STATE.__DEV__ && typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__) {
+        composeList.push(window.__REDUX_DEVTOOLS_EXTENSION__());
     };
 
     const enhancer = compose(...composeList);
