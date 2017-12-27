@@ -9,7 +9,6 @@ const I18nPlugin = require('i18n-webpack-plugin');
 const vConsolePlugin = require('vconsole-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const os = require('os');
 const {
     ReactLoadablePlugin
@@ -117,21 +116,18 @@ if (config.SERVICE_STATE.__BUILD_TYPE__ === 'client') {
 
 if (config.SERVICE_STATE.__BUILD_TYPE__ === 'ssr') {
     addPushPlugins(plugins['devPlugins'],
-
         new ReactLoadablePlugin({
             filename: `${config.path.distPath}/react-loadable.json`,
         }),
-        // 生成构建清单json
-        new ManifestPlugin(),
 
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     filename: 'vendor.bundle.js',
-        //     // 通过获取入口依赖的所有module来匹配 是否 存在于node_modules
-        //     minChunks: module => module.resource &&
-        //         /\.js$/.test(module.resource) &&
-        //         module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0,
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.bundle.js',
+            // 通过获取入口依赖的所有module来匹配 是否 存在于node_modules
+            minChunks: module => module.resource &&
+                /\.js$/.test(module.resource) &&
+                module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0,
+        }),
     );
 }
 
