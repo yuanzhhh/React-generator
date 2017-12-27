@@ -5,7 +5,6 @@ const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const I18nPlugin = require('i18n-webpack-plugin');
-const vConsolePlugin = require('vconsole-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const os = require('os');
@@ -20,10 +19,6 @@ const HappyThreadPool = HappyPack.ThreadPool({
 
 // 客户端使用的插件
 const windowPlugin = [
-    new vConsolePlugin({
-        enable: true,
-    }),
-
     new HtmlWebpackPlugin({
         title: '开发 || 调试',
         filename: `index.html`,

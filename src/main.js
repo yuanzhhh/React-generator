@@ -12,6 +12,12 @@ import createApp from './createApp';
 fastClick.attach(document.body);
 
 if (SERVICE_STATE.__DEV__) {
+  // 功能少
+  // new (require('vconsole'));
+  
+  // 功能多
+  require('eruda').init();
+  
   const { whyDidYouUpdate } = require('why-did-you-update');
 
   whyDidYouUpdate(React);
