@@ -42,9 +42,9 @@ const compile = (conf, done) => webpack(conf, (err, stats) => {
 
 gulp.task('default', gulp.series(
     gulp.parallel(
-        done => compile(ssrWebpackConf, done),
-    
         done => compile(clientWebpackConf, done),
+
+        done => compile(ssrWebpackConf, done),
     ),
 
     done => {

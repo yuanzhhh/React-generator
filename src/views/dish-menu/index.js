@@ -19,7 +19,7 @@ class DishMenu extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getInitData(666);  
+    this.props.getInitData(66622);  
   }
 
   render () {
@@ -31,7 +31,7 @@ class DishMenu extends React.Component {
         { dishNum }
         { __("你你你") }
         </span>
-        <h1>测试1测试1测试1</h1>
+        <h1>测试1测试1测试2123123112123313121</h1>
       </div>
     )
   }

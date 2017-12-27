@@ -1,5 +1,8 @@
 const config = require('./config');
-const plugins = require('./plugins')();
+const {
+    devClientPlugins,
+    devSsrClientPlugins
+} = require('./plugins');
 
 const {
     path: configPath,
@@ -17,8 +20,7 @@ module.exports = {
                 'webpack-hot-middleware/client?reload=true',
                 'webpack/hot/only-dev-server',
                 configPath.entryPath
-            ] :
-            [configPath.entryPath]
+            ] : [configPath.entryPath]
         )
     },
 
@@ -29,5 +31,5 @@ module.exports = {
         chunkFilename: 'assets/[id].[name].bundle.js',
     },
 
-    plugins,
+    plugins: SERVICE_STATE.__BUILD_TYPE__ === 'client' ? devClientPlugins : devSsrClientPlugins,
 }

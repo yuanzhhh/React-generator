@@ -35,7 +35,7 @@ const styles = [{
         test: /\.(scss|sass)$/,
         use: ExtractTextPlugin.extract({
             fallback: "style-loader",
-            use: ['happypack/loader?id=styles_sass', postCSSLoader]
+            use: ['happypack/loader?id=styles-sass', postCSSLoader]
         })
     },
     {
