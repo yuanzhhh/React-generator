@@ -10,6 +10,7 @@ const vConsolePlugin = require('vconsole-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const os = require('os');
 const {
     ReactLoadablePlugin
 } = require('react-loadable/webpack');
@@ -17,6 +18,11 @@ const {
 const cnJson = require("./languages/cn.json");
 const utils = require('./utils');
 const config = require('./config');
+
+const HappyThreadPool = HappyPack.ThreadPool({
+    size: os.cpus().length,
+});
+
 
 const addPushPlugins = (pluginsList, ...newPlugins) => newPlugins.forEach(element => pluginsList.push(element));
 
@@ -52,21 +58,25 @@ addPushPlugins(plugins['basePlugins'],
     // HappyPack
     new HappyPack({
         id: 'scripts',
+        threadPool: HappyThreadPool,
         loaders: ['babel-loader']
     }),
 
     new HappyPack({
         id: 'eslint-scripts',
+        threadPool: HappyThreadPool,
         loaders: ['eslint-loader']
     }),
 
     new HappyPack({
         id: 'styles_sass',
+        threadPool: HappyThreadPool,
         loaders: ['css-loader', 'sass-loader']
     }),
 
     new HappyPack({
         id: 'styles',
+        threadPool: HappyThreadPool,
         loaders: ['css-loader']
     }),
 );
