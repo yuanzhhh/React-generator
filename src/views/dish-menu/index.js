@@ -31,7 +31,7 @@ class DishMenu extends React.Component {
         { dishNum }
         { __("你你你") }
         </span>
-        <h1>测试1测试1测试dawd</h1>
+        <h1>测试1测试1测试aw</h1>
       </div>
     )
   }

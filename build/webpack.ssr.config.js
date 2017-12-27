@@ -23,9 +23,9 @@ module.exports = merge(baseConf, {
     },
 
     // 清除webpack打包后的node modules
-    // externals: [
-    //     nodeExternals()
-    // ],
+    externals: [
+        nodeExternals()
+    ],
 
     target: 'node',
 
