@@ -17,7 +17,8 @@
       "command": "webpack --config build/webpack.dll.conf.js && node build/server/dev.server.js",
       "env": {
         "NODE_ENV": "development",
-        "BUILD_TYPE": "client"
+        "BUILD_TYPE": "client",
+        "HOST": "192.168.10.98"
       }
     },
     "dev-ssr": {
@@ -25,6 +26,7 @@
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "ssr",
+        "HOST": "192.168.10.98",
         "PORT": "9000"
       }
     },

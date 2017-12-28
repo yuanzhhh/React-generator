@@ -35,7 +35,8 @@ const nyanCatSaysList = require('./nyanCatSaysList');
 const baseDevPlugins = [
     // 🌈 进度条
     new NyanProgressPlugin({
-        nyanCatSays: progress => progress === 1 && nyanCatSaysList[Math.floor(Math.random() * nyanCatSaysList.length)]
+        nyanCatSays: progress => progress === 1 && nyanCatSaysList[Math.floor(Math.random() * nyanCatSaysList.length)],
+        debounceInterval: 100,
     }),
 
     // 跳过错误输出
