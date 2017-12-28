@@ -5,19 +5,21 @@ const config = require('./config');
 const { devSsrServerPlugins } = require('./plugins');
 
 const {
-    path: configPath
-} = config;
+    ssrCodePath,
+    ssrDist,
+    publicPath,
+} = config.path;
 
 module.exports = merge(baseConf, {
     entry: {
-        ssr_modules: configPath.ssrCodePath,
+        ssr_modules: ssrCodePath,
     },
 
     devtool: 'source-map',
 
     output: {
-        path: configPath.ssrDist,
-        publicPath: configPath.publicPath,
+        path: ssrDist,
+        publicPath,
         filename: '[name].bundle.js',
         libraryTarget: 'commonjs2',
     },
