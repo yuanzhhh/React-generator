@@ -11,7 +11,7 @@ const os = require('os');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 const cnJson = require("./languages/cn.json");
-const config = require('./config');
+const config = require('../config');
 
 const HappyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length,
