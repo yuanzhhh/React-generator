@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 
 import './dist-menu.scss';
 
+import BaseComponent from '@/BaseComponent';
 import dispatchToProps from './dispatchToProps';
 import stateToProps from './stateToProps';
 
-class DishMenu extends React.Component {
+class DishMenu extends BaseComponent {
 
   static propTypes = {
     dishNum: PropTypes.number.isRequired,
@@ -15,11 +16,18 @@ class DishMenu extends React.Component {
   }
 
   constructor (props) {
-    super(props)
+    super(props);
+    this.bind(
+      'onClicks'
+    );
+  }
+
+  onClicks() {
+    console.log(this.props.dishNum);
   }
 
   componentDidMount() {
-    this.props.getInitData(666);  
+    this.props.getInitData(666);
   }
 
   render () {
@@ -27,7 +35,7 @@ class DishMenu extends React.Component {
     
     return (
       <div>
-        <span>
+        <span onClick={this.onClicks}>
         { dishNum }
         { __("你你你") }
         </span>
