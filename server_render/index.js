@@ -6,7 +6,6 @@ const router = require('./router.js');
 const app = new Koa();
 
 if (process.env.NODE_ENV === 'development') {
-
   const path = require('path');
 
   const clientPath = path.resolve(__dirname, '..' , 'dist');
