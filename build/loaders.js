@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const pxtoviewport = require('postcss-px-to-viewport');
 
 const config = require('./config');
 
@@ -26,6 +27,10 @@ const postCSSLoader = {
         plugins: [
             autoprefixer({
                 browsers: ['Safari > 1']
+            }),
+            pxtoviewport({
+                viewportWidth: 320,
+                viewportUnit: 'vw',
             }),
         ],
     }
