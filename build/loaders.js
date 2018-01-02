@@ -29,8 +29,13 @@ const postCSSLoader = {
                 browsers: ['Safari > 1']
             }),
             pxtoviewport({
-                viewportWidth: 320,
+                viewportWidth: config.viewportWidth,
+                viewportHeight: config.viewportHeight,
+                unitPrecision: 5,
                 viewportUnit: 'vw',
+                selectorBlackList: [],
+                minPixelValue: 1,
+                mediaQuery: false,
             }),
         ],
     }

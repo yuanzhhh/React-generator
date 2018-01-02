@@ -21,6 +21,13 @@ const SSR_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'ssr_modules');
 const PUBLIC_PATH = '/';
 
 module.exports = {
+
+    // 设计稿宽度
+    viewportWidth: 750,
+
+    // 设计稿高度
+    viewportHeight: 1334,
+
     // 端口
     port: 9090,
 
@@ -68,7 +75,7 @@ module.exports = {
 
         // dist ssr
         ssrDist: SSR_DIST_PATH,
-        
+
         // dist client 
         clientDist: CLIENT_DIST_PATH,
     },
