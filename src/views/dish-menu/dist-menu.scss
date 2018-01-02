@@ -1,9 +1,18 @@
 span {
   border: 3px rgb(255, 0, 0) solid;
+  width: 360px;
 }
 
 h1 {
   font-size: 12px;
   text-align: center;
   color: #d87093;
+}
+
+body {
+  margin: 0;
+}
+
+[data-w-750-235] {
+  width: 10px;
 }

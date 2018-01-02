@@ -14,6 +14,7 @@ module.exports = {
         app: [
             'eventsource-polyfill',
             'babel-polyfill',
+            'viewport-units-buggyfill',
         ].concat(
             SERVICE_STATE.__BUILD_TYPE__ === 'client' ? [
                 'react-hot-loader/patch',
