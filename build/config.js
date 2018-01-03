@@ -14,9 +14,11 @@ const SRC_PATH = path.resolve(ROOT_PATH, 'src');
 const ENTRY_PATH = path.resolve(ROOT_PATH, 'src', 'main.js');
 const STATIC_PATH = path.resolve(ROOT_PATH, 'static');
 const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
+const BUNDLE_PATH = path.resolve(ROOT_PATH, 'bundle');
 const SSR_CODE_PATH = path.resolve(ROOT_PATH, 'src', 'ssrModule.js');
 const CLIENT_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'client');
 const SSR_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'ssr_modules');
+const SSR_BUNDLE_PATH = path.resolve(ROOT_PATH, 'bundle', 'ssr_modules');
 
 const PUBLIC_PATH = '/';
 
@@ -64,6 +66,9 @@ module.exports = {
         // dist
         distPath: DIST_PATH,
 
+        // bundle
+        bundlePath: BUNDLE_PATH,
+
         // webpack dll路径
         dllPath: `${ROOT_PATH}/dll`,
 
@@ -75,6 +80,9 @@ module.exports = {
 
         // dist ssr
         ssrDist: SSR_DIST_PATH,
+
+        // bundle ssr
+        ssrBundle: SSR_BUNDLE_PATH,
 
         // dist client 
         clientDist: CLIENT_DIST_PATH,

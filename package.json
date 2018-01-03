@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "wx pwa generator",
   "scripts": {
-    "dev": "npm-run-all -s clean dev:client",
-    "devs": "npm-run-all -s clean dev:ssr",
-    "server:watch": "better-npm-run watch-server-dev",
+    "dev": "npm-run-all -s cleanDist dev:client",
+    "devs": "npm-run-all -s cleanDist dev:ssr",
+    "bundle": "npm-run-all -s cleanBundle bundle:client",
+    "bundles": "npm-run-all -s cleanBundle bundle:ssr",
     "dev:client": "better-npm-run dev-client",
     "dev:ssr": "better-npm-run dev-ssr",
-    "clean": "rm -rf dll dist",
+    "bundle:client": "better-npm-run bundle-client",
+    "bundle:ssr": "better-npm-run bundle-ssr",
+    "cleanDist": "rm -rf dll dist",
+    "cleanBundle": "rm -rf dll bundle",
     "commit": "npm-run-all -s git-commit",
     "git-commit": "git cz"
   },
@@ -18,22 +22,30 @@
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "client",
-        "HOST": "192.168.10.98"
+        "HOST": "0.0.0.0"
       }
     },
     "dev-ssr": {
-      "command": "gulp",
+      "command": "gulp dev-ssr",
       "env": {
         "NODE_ENV": "development",
         "BUILD_TYPE": "ssr",
-        "HOST": "192.168.10.98",
+        "HOST": "0.0.0.0",
         "PORT": "9000"
       }
     },
-    "watch-server-dev": {
-      "command": "nodemon server_render/index.js",
+    "bundle-client": {
+      "command": "webpack --config build/webpack.config.js",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "production",
+        "BUILD_TYPE": "client"
+      }
+    },
+    "bundle-ssr": {
+      "command": "gulp bundle",
+      "env": {
+        "NODE_ENV": "production",
+        "BUILD_TYPE": "ssr"
       }
     }
   },

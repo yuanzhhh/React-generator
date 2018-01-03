@@ -2,11 +2,12 @@ const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const baseConf = require('./webpack.base.conf');
 const config = require('./config');
-const { devSsrServerPlugins } = require('./plugins');
+const { devSsrServerPlugins, bundleSsrServerPlugins } = require('./plugins');
 
 const {
     ssrCodePath,
     ssrDist,
+    ssrBundle,
     publicPath,
 } = config.path;
 
@@ -18,7 +19,7 @@ module.exports = merge(baseConf, {
     devtool: 'source-map',
 
     output: {
-        path: ssrDist,
+        path: config.SERVICE_STATE.__DEV__ ? ssrDist : ssrBundle,
         publicPath,
         filename: '[name].bundle.js',
         libraryTarget: 'commonjs2',
@@ -31,5 +32,5 @@ module.exports = merge(baseConf, {
 
     target: 'node',
 
-    plugins: devSsrServerPlugins,
+    plugins: config.SERVICE_STATE.__DEV__ ? devSsrServerPlugins : bundleSsrServerPlugins,
 });

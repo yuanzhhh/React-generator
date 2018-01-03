@@ -8,10 +8,12 @@ const { getBundles } = require('react-loadable/webpack');
 const config = require('../build/config');
 const readFile = require('./readFile');
 
-const ssrModule = require(`${config.path.ssrDist}/ssr_modules.bundle`);
-const stats = require(`${config.path.distPath}/react-loadable.json`);
+const NODE_ENV = process.env.NODE_ENV;
 
-const htmlPath = `${config.path.distPath}/index.html`;
+const ssrModule = require(`${config.path.ssrDist}/ssr_modules.bundle`);
+const stats = require(`${NODE_ENV === 'development' ? config.path.distPath : config.path.bundlePath}/react-loadable.json`);
+
+const htmlPath = `${NODE_ENV === 'development' ? config.path.distPath : config.path.bundlePath}/index.html`;
 
 module.exports = async (ctx, next) => {
     

@@ -39,7 +39,7 @@ class DishMenu extends BaseComponent {
         { dishNum }
         { __("你你你") }
         </span>
-        <h1 data-w-750-235>测试1测试1测试aw</h1>
+        <h1 data-w-750-235>测试1测试1测试</h1>
       </div>
     )
   }

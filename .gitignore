@@ -39,6 +39,9 @@ dll
 # dist
 dist
 
+# bundle
+bundle
+
 # OSX
 .DS_Store
 

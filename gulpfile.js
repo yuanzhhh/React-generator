@@ -4,10 +4,7 @@ const opn = require('opn');
 const nodemon = require('gulp-nodemon');
 
 const ssrWebpackConf = require('./build/webpack.ssr.config');
-const clientWebpackConf = require('./build/webpack.config');
-
-ssrWebpackConf.watch = true;
-clientWebpackConf.watch = true;
+const webpackConfig = require('./build/webpack.config');
 
 const errFun = (err, stats) => {
     if (err) {
@@ -40,9 +37,16 @@ const compile = (conf, done) => webpack(conf, (err, stats) => {
     done();
 })
 
-gulp.task('default', gulp.series(
+gulp.task('dev-ssr', gulp.series(
+    done => {
+        ssrWebpackConf.watch = true;
+        webpackConfig.watch = true;
+
+        done();
+    },
+
     gulp.parallel(
-        done => compile(clientWebpackConf, done),
+        done => compile(webpackConfig, done),
 
         done => compile(ssrWebpackConf, done),
     ),
@@ -65,4 +69,12 @@ gulp.task('default', gulp.series(
 
         done();
     },
+));
+
+gulp.task('bundle', gulp.series(
+    gulp.parallel(
+        done => compile(webpackConfig, done),
+
+        done => compile(ssrWebpackConf, done),
+    ),
 ));

@@ -143,3 +143,53 @@ exports.devSsrServerPlugins = [
 
     ...baseDevPlugins,
 ]
+
+exports.bundleSsrServerPlugins = [
+    ...basePlugins,
+]
+
+exports.bundleClientPlugins = [
+    ...basePlugins,
+
+    ...windowPlugin,
+
+    // 作用域提升
+    new webpack.optimize.ModuleConcatenationPlugin(),
+
+    new webpack.optimize.UglifyJsPlugin({
+        beautify: false,
+        comments: false,
+        compress: {
+          warnings: false,
+          collapse_vars: true,
+          reduce_vars: true
+        }
+    }),
+
+    new ReactLoadablePlugin({
+        filename: `${config.path.bundlePath}/react-loadable.json`,
+    }),
+]
+
+exports.bundleSsrPlugins = [
+    ...basePlugins,
+
+    ...windowPlugin,
+
+    // 作用域提升
+    new webpack.optimize.ModuleConcatenationPlugin(),
+
+    new webpack.optimize.UglifyJsPlugin({
+        beautify: false,
+        comments: false,
+        compress: {
+          warnings: false,
+          collapse_vars: true,
+          reduce_vars: true
+        }
+    }),
+
+    new ReactLoadablePlugin({
+        filename: `${config.path.bundlePath}/react-loadable.json`,
+    }),
+]
