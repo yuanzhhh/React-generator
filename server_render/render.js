@@ -5,7 +5,7 @@ const minify = require('html-minifier').minify;
 const matchRoutes = require('react-router-config').matchRoutes;
 const { getBundles } = require('react-loadable/webpack');
 
-const config = require('../build/config');
+const config = require('../config');
 const readFile = require('./readFile');
 
 const NODE_ENV = process.env.NODE_ENV;

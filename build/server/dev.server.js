@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const middleware = require('koa-webpack');
 const webpack = require('webpack');
-const config = require('../config');
+const config = require('../../config');
 const webpackConf = require('../webpack.config');
 
 const compilerRes = webpack(webpackConf);

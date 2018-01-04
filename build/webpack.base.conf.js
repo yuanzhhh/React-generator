@@ -1,5 +1,5 @@
 const loaders = require('./loaders');
-const config = require('./config');
+const config = require('../config');
 
 const { SERVICE_STATE, path: configPath } = config
 

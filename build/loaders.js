@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const pxtoviewport = require('postcss-px-to-viewport');
 
-const config = require('./config');
+const config = require('../config');
 
 const eslint = {
     enforce: 'pre',

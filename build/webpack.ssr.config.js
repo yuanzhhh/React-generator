@@ -1,7 +1,7 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const baseConf = require('./webpack.base.conf');
-const config = require('./config');
+const config = require('../config');
 const { devSsrServerPlugins, bundleSsrServerPlugins } = require('./plugins');
 
 const {

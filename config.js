@@ -9,16 +9,16 @@ const __PROD__ = (env.NODE_ENV === 'production');
 const __BUILD_TYPE__ = env.BUILD_TYPE;
 const __BUILD_PATH__ = env.BUILD_PATH;
 
-const ROOT_PATH = path.resolve(__dirname, '..');
-const SRC_PATH = path.resolve(ROOT_PATH, 'src');
-const ENTRY_PATH = path.resolve(ROOT_PATH, 'src', 'main.js');
-const STATIC_PATH = path.resolve(ROOT_PATH, 'static');
-const DIST_PATH = path.resolve(ROOT_PATH, 'dist');
-const BUNDLE_PATH = path.resolve(ROOT_PATH, 'bundle');
-const SSR_CODE_PATH = path.resolve(ROOT_PATH, 'src', 'ssrModule.js');
-const CLIENT_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'client');
-const SSR_DIST_PATH = path.resolve(ROOT_PATH, 'dist', 'ssr_modules');
-const SSR_BUNDLE_PATH = path.resolve(ROOT_PATH, 'bundle', 'ssr_modules');
+const ROOT_PATH = path.resolve(__dirname);
+const SRC_PATH = path.join(ROOT_PATH, 'src');
+const ENTRY_PATH = path.join(ROOT_PATH, 'src', 'main.js');
+const STATIC_PATH = path.join(ROOT_PATH, 'static');
+const DIST_PATH = path.join(ROOT_PATH, 'dist');
+const BUNDLE_PATH = path.join(ROOT_PATH, 'bundle');
+const SSR_CODE_PATH = path.join(ROOT_PATH, 'src', 'ssrModule.js');
+const CLIENT_DIST_PATH = path.join(ROOT_PATH, 'dist', 'client');
+const SSR_DIST_PATH = path.join(ROOT_PATH, 'dist', 'ssr_modules');
+const SSR_BUNDLE_PATH = path.join(ROOT_PATH, 'bundle', 'ssr_modules');
 
 const PUBLIC_PATH = '/';
 
