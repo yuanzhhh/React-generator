@@ -30,6 +30,9 @@ module.exports = {
     // 设计稿高度
     viewportHeight: 1334,
 
+    // 基准值
+    viewportBaseline: 10,
+
     // 端口
     port: 9090,
 

@@ -58,6 +58,8 @@ const basePlugins = [
             PORT: process.env.PORT || config.port,
         },
         SERVICE_STATE: JSON.stringify(config.SERVICE_STATE),
+        // 基准值
+        VIEWPORT_BASELINE: config.viewportBaseline,
     }),
 
     new I18nPlugin(cnJson),
