@@ -32,5 +32,7 @@ module.exports = {
         chunkFilename: 'assets/[id].[name].bundle.js',
     },
 
+    mode: 'development',
+
     plugins: SERVICE_STATE.__BUILD_TYPE__ === 'client' ? devClientPlugins : devSsrClientPlugins,
 }

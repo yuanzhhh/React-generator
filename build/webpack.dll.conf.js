@@ -11,6 +11,7 @@ module.exports = {
         filename: 'vendor.dll.bundle.js',
         library: 'library_[hash]',
     },
+    mode: 'development',
     node: {
         fs: 'empty',
         net: 'empty',

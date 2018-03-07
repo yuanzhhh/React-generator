@@ -12,7 +12,6 @@ const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 const cnJson = require("./languages/cn.json");
 const config = require('../../config');
-
 const HappyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length,
 });
@@ -158,16 +157,6 @@ exports.bundleClientPlugins = [
     // 作用域提升
     new webpack.optimize.ModuleConcatenationPlugin(),
 
-    new webpack.optimize.UglifyJsPlugin({
-        beautify: false,
-        comments: false,
-        compress: {
-          warnings: false,
-          collapse_vars: true,
-          reduce_vars: true
-        }
-    }),
-
     new ReactLoadablePlugin({
         filename: `${config.path.bundlePath}/react-loadable.json`,
     }),
@@ -180,16 +169,6 @@ exports.bundleSsrPlugins = [
 
     // 作用域提升
     new webpack.optimize.ModuleConcatenationPlugin(),
-
-    new webpack.optimize.UglifyJsPlugin({
-        beautify: false,
-        comments: false,
-        compress: {
-          warnings: false,
-          collapse_vars: true,
-          reduce_vars: true
-        }
-    }),
 
     new ReactLoadablePlugin({
         filename: `${config.path.bundlePath}/react-loadable.json`,

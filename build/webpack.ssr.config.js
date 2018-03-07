@@ -29,6 +29,8 @@ module.exports = merge(baseConf, {
     externals: [
         nodeExternals()
     ],
+    
+    mode: 'development',
 
     target: 'node',
 
