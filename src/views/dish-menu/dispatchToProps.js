@@ -16,7 +16,7 @@ const getInitData = num => async dispatch => {
         type: 'ADD_DISH_NUM',
         payload: getData,
     });
-}
+};
 
 export default {
     addDishNum,

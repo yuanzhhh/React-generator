@@ -8,11 +8,10 @@ const DishMenu = Loadable({
     loading,
 });
 
-
 export default {
     path: '/DishMenu',
     component: DishMenu,
     init: async store => {
-        await store.dispatch(dispatchToProps.getInitData('你好'))
+        await store.dispatch(dispatchToProps.getInitData('你好'));
     },
 }

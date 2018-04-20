@@ -5,9 +5,9 @@ const initState = {
     'dishNum': 0,
 }
 
-const addDishNum = (state, action) => update(state, {
+const addDishNum = (state, { payload }) => update(state, {
     dishNum:{
-        $set: action.payload,
+        $set: payload,
     },
 });
 

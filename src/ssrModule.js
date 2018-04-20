@@ -5,5 +5,5 @@ import routers from './router/routers';
 export {
     createApp,
     createStore,
-    routers
+    routers,
 }

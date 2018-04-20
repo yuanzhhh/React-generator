@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Router,
   Route,
@@ -7,7 +7,7 @@ import {
 
 import routers from './routers';
 
-const BasicRouter = props => (
+export default props => (
   <Router history={props.history}>
     <div>
       <ul>
@@ -21,6 +21,4 @@ const BasicRouter = props => (
       }
     </div>
   </Router>
-)
-
-export default BasicRouter;
+);

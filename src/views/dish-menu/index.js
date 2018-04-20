@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './dist-menu.scss';
-
 import BaseComponent from '@/BaseComponent';
 import dispatchToProps from './dispatchToProps';
 import stateToProps from './stateToProps';
 
-class DishMenu extends BaseComponent {
-
+import './dist-menu.scss';
+@connect(stateToProps, dispatchToProps)
+export default class DishMenu extends BaseComponent {
   static propTypes = {
     dishNum: PropTypes.any.isRequired,
     addDishNum: PropTypes.func.isRequired,
@@ -27,6 +26,10 @@ class DishMenu extends BaseComponent {
     console.log(this.props.dishNum);
   }
 
+  componentDidMount() {
+    this.props.getInitData('你好');
+  }
+
   render () {
     const { dishNum } = this.props;
     
@@ -42,6 +45,4 @@ class DishMenu extends BaseComponent {
       </div>
     )
   }
-}
-
-export default connect(stateToProps, dispatchToProps)(DishMenu);
+};

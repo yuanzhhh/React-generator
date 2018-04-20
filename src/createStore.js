@@ -2,10 +2,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import reducers from './reducers'
+import reducers from './reducers';
 
 export default (state = {}) => {
-
     const composeList = [
         applyMiddleware(thunk),
     ];
