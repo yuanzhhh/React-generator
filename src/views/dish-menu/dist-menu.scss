@@ -1,18 +1,20 @@
 span {
-  border: 3px rgb(255, 0, 0) solid;
   width: 360px;
 }
 
 h1 {
-  font-size: 12px;
-  text-align: center;
+  font-size: 18px;
   color: #d87093;
+  font-weight: 800;
 }
 
-body {
+ul,
+li {
   margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
-[data-w-750-235] {
-  width: 10px;
+.body {
+  padding: 30px;
 }

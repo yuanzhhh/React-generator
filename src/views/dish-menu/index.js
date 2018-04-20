@@ -11,35 +11,34 @@ import stateToProps from './stateToProps';
 class DishMenu extends BaseComponent {
 
   static propTypes = {
-    dishNum: PropTypes.number.isRequired,
+    dishNum: PropTypes.any.isRequired,
     addDishNum: PropTypes.func.isRequired,
   }
 
   constructor (props) {
     super(props);
+
     this.bind(
-      'onClicks'
+      'onClick'
     );
   }
 
-  onClicks() {
+  onClick() {
     console.log(this.props.dishNum);
-  }
-
-  componentDidMount() {
-    this.props.getInitData(666);
   }
 
   render () {
     const { dishNum } = this.props;
     
     return (
-      <div>
-        <span onClick={this.onClicks}>
-        { dishNum }
-        { __("你你你") }
+      <div className="react-generator">
+        <p>{ dishNum }</p>
+        <span onClick={this.onClick}>
+        { __("你好 世界") }
         </span>
-        <h1 data-w-750-235>测试1测试1测试</h1>
+        <h1>
+          React-generator
+        </h1>
       </div>
     )
   }

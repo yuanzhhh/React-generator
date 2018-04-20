@@ -13,8 +13,6 @@ export default {
     path: '/DishMenu',
     component: DishMenu,
     init: async store => {
-        await store.dispatch(dispatchToProps.getInitData(599))
-        
-        await store.dispatch(dispatchToProps.getInitData(666))
+        await store.dispatch(dispatchToProps.getInitData('你好'))
     },
 }
