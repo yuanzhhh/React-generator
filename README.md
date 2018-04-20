@@ -9,7 +9,7 @@ React-generator client or ssr for development
 * react-router 4
 * sass
 * px compile for vw
-* 字符串转码国际化解决方案（编译后转码）
+* String transcoding internationalization solution (transcode after compilation)
 * Basic code specification complies with Airbnb
 
 ## Usage
