@@ -65,7 +65,7 @@ gulp.task('dev-ssr', gulp.series(
     },
 
     done => {
-        opn(`http://localhost:${process.env.PORT}/`);
+        opn(`http://${process.env.HOST}:${process.env.PORT}/`);
 
         done();
     },
