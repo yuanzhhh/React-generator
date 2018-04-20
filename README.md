@@ -1,7 +1,7 @@
 # React-generator
 
 ## Intro
-React-generator  by client or ssr  for development</br>
+React-generator client or ssr for development
 
 ## Usage
 ```
