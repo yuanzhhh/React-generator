@@ -7,7 +7,7 @@ const {
 const {
     path: configPath,
     SERVICE_STATE
-} = config
+} = config;
 
 module.exports = {
     entry: {
@@ -35,4 +35,4 @@ module.exports = {
     mode: 'development',
 
     plugins: SERVICE_STATE.__BUILD_TYPE__ === 'client' ? devClientPlugins : devSsrClientPlugins,
-}
+};

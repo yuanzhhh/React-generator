@@ -22,4 +22,4 @@ module.exports = {
             path: `${config.path.dllPath}/manifest.json`,
         })
     ]
-}
+};
