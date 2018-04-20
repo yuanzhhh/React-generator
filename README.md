@@ -3,6 +3,15 @@
 ## Intro
 React-generator client or ssr for development
 
+* webpack 4.5
+* koa 2
+* Redux
+* react-router 4
+* sass
+* px compile for vw
+* 字符串转码国际化解决方案（编译后转码）
+* 基础代码规范遵照的 Airbnb
+
 ## Usage
 ```
 # clone
