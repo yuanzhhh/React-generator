@@ -3,6 +3,15 @@
 ## Intro
 React-generator client or ssr for development
 
+* webpack 4.5
+* koa 2
+* Redux
+* react-router 4
+* sass
+* px compile for vw
+* String transcoding internationalization solution (transcode after compilation)
+* Basic code specification complies with Airbnb
+
 ## Usage
 ```
 # clone
