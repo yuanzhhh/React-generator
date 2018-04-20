@@ -16,7 +16,6 @@ const stats = require(`${NODE_ENV === 'development' ? config.path.distPath : con
 const htmlPath = `${NODE_ENV === 'development' ? config.path.distPath : config.path.bundlePath}/index.html`;
 
 module.exports = async (ctx, next) => {
-    
     const matchRoute = matchRoutes(ssrModule.routers, ctx.originalUrl);
     
     if (!matchRoute.length) return;
