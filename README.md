@@ -10,7 +10,7 @@ React-generator client or ssr for development
 * sass
 * px compile for vw
 * 字符串转码国际化解决方案（编译后转码）
-* 基础代码规范遵照的 Airbnb
+* Basic code specification complies with Airbnb
 
 ## Usage
 ```
