@@ -5,12 +5,8 @@
   "scripts": {
     "dev": "npm-run-all -s clean dev:client",
     "devs": "npm-run-all -s clean dev:ssr",
-    "bundle": "npm-run-all -s clean bundle:client",
-    "bundles": "npm-run-all -s clean bundle:ssr",
     "dev:client": "better-npm-run dev-client",
     "dev:ssr": "better-npm-run dev-ssr",
-    "bundle:client": "better-npm-run bundle-client",
-    "bundle:ssr": "better-npm-run bundle-ssr",
     "clean": "rimraf dll dist bundle",
     "commit": "npm-run-all -s git-commit",
     "git-commit": "git cz"
