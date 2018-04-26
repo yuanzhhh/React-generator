@@ -9,6 +9,7 @@ React-generator client or ssr for development
 * react-router 4
 * sass
 * px compile for vw
+* Router dynamic
 * String transcoding internationalization solution (transcode after compilation)
 * Basic code specification complies with Airbnb
 
