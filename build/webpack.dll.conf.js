@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const config = require('../config');
 const packageDev = require('../package.json');
 
-
 module.exports = {
     name: 'vendor',
     entry: Object.keys(packageDev.dependencies),
