@@ -5,13 +5,17 @@ import { connect } from 'react-redux';
 import BaseComponent from '@/BaseComponent';
 import dispatchToProps from './dispatchToProps';
 import stateToProps from './stateToProps';
+import composeAction from '../../components/composeAction';
+import initDidMountList from './initDidMountList';
 
 import './dist-menu.scss';
-@connect(stateToProps, dispatchToProps)
+
+const composeProps = composeAction(initDidMountList, dispatchToProps);
+
+@connect(stateToProps, composeProps)
 export default class DishMenu extends BaseComponent {
   static propTypes = {
     dishNum: PropTypes.any.isRequired,
-    addDishNum: PropTypes.func.isRequired,
   }
 
   constructor (props) {
@@ -27,6 +31,7 @@ export default class DishMenu extends BaseComponent {
   }
 
   componentDidMount() {
+    // console.log(this.props.getInitData, '@@@');
     this.props.getInitData('你好');
   }
 

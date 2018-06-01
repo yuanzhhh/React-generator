@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 
 const initState = {
     'dishNum': 0,
+    'asd': 0,
 }
 
 const addDishNum = (state, { payload }) => update(state, {
@@ -11,6 +12,15 @@ const addDishNum = (state, { payload }) => update(state, {
     },
 });
 
+const addDishNums = (state, { payload }) => {
+    return update(state, {
+        asd:{
+            $set: payload,
+        },
+    });
+}
+
 export default createReducer(initState, {
     ADD_DISH_NUM: addDishNum,
+    ADD_DISH_NUMs: addDishNums,
 });

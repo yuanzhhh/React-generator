@@ -1,7 +1,25 @@
 import Loadable from 'react-loadable';
 
 import loading from '@/components/loadableLoading';
-import dispatchToProps from './dispatchToProps';
+import initDid from './initDidMountList';
+
+function compose(...funcs) {
+    if (funcs.length === 0) {
+      return arg => arg
+    }
+  
+    if (funcs.length === 1) {
+      return funcs[0]
+    }
+
+    return funcs.reduce((a, b) => {
+        return (...args) => {
+            console.log(a, b);
+            return a( b(...args) );
+        };
+    })
+  }
+  
 
 const DishMenu = Loadable({
     loader: () => import('./'),
@@ -11,7 +29,5 @@ const DishMenu = Loadable({
 export default {
     path: '/DishMenu',
     component: DishMenu,
-    init: async store => {
-        await store.dispatch(dispatchToProps.getInitData('你好'));
-    },
+    init: compose(...initDid)(),
 }
