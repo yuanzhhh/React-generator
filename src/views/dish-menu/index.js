@@ -31,8 +31,11 @@ export default class DishMenu extends BaseComponent {
   }
 
   componentDidMount() {
-    // console.log(this.props.getInitData, '@@@');
+    console.log(this.props.getInitData, '@@@');
+
     this.props.getInitData('你好');
+    
+    this.props.addDishNum();
   }
 
   render () {

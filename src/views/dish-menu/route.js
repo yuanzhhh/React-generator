@@ -14,7 +14,6 @@ function compose(...funcs) {
 
     return funcs.reduce((a, b) => {
         return (...args) => {
-            console.log(a, b);
             return a( b(...args) );
         };
     })
@@ -29,5 +28,5 @@ const DishMenu = Loadable({
 export default {
     path: '/DishMenu',
     component: DishMenu,
-    init: compose(...initDid)(),
+    init: compose(...initDid),
 }

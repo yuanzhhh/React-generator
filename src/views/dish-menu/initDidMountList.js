@@ -1,15 +1,16 @@
-const addDishNum = next => {
-    console.log(next, '!!!');
-    return (dispatch) => {
-        
+const addDishNum = dispatch => {
+    console.log('@@@');
+
+    if (typeof dispatch === 'function') {
         dispatch({
             type: 'ADD_DISH_NUMs',
             payload: 'asdww',
         });
-
-        if (typeof next === 'function') {
-            next(dispatch);
-        }
+    } else {
+        return {
+            type: 'ADD_DISH_NUMs',
+            payload: 'asdww',
+        };
     }
 };
 
@@ -19,8 +20,8 @@ const asyncTestFun = str => new Promise((resolve, reject) => {
     }, 20);
 });
 
-const getInitData = next => async (dispatch) => {
-    console.log(next, '####');
+const bs = async (dispatch) => {
+    
     const getData = await asyncTestFun('嗷嗷');
     
     dispatch({
@@ -30,6 +31,17 @@ const getInitData = next => async (dispatch) => {
 
     if (typeof next === 'function') {
         next(dispatch);
+    }
+}
+
+const getInitData = next => {
+    console.log(next, '####');
+    
+
+    if (typeof next === 'function') {
+        next(bs);
+    } else {
+        return bs;
     }
 };
 
