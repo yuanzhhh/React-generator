@@ -23,7 +23,7 @@ module.exports = async (ctx, next) => {
     const store = ssrModule.createStore();
 
     if (matchRoute[0].route.init) {
-        await matchRoute[0].route.init(store.dispatch);
+        await matchRoute[0].route.init()(store.dispatch);
     }
 
     const modules = [];

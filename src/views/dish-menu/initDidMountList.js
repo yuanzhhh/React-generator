@@ -1,18 +1,7 @@
-const addDishNum = dispatch => {
-    console.log('@@@');
-
-    if (typeof dispatch === 'function') {
-        dispatch({
-            type: 'ADD_DISH_NUMs',
-            payload: 'asdww',
-        });
-    } else {
-        return {
-            type: 'ADD_DISH_NUMs',
-            payload: 'asdww',
-        };
-    }
-};
+const addDishNum = () => dispatch => dispatch({
+    type: 'ADD_DISH_NUMS',
+    payload: 'asdww',
+});
 
 const asyncTestFun = str => new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -20,30 +9,14 @@ const asyncTestFun = str => new Promise((resolve, reject) => {
     }, 20);
 });
 
-const bs = async (dispatch) => {
-    
-    const getData = await asyncTestFun('嗷嗷');
+const getInitData = () => async dispatch => {
+    const getData = await asyncTestFun('初始化成功');
     
     dispatch({
         type: 'ADD_DISH_NUM',
         payload: getData,
     });
-
-    if (typeof next === 'function') {
-        next(dispatch);
-    }
 }
-
-const getInitData = next => {
-    console.log(next, '####');
-    
-
-    if (typeof next === 'function') {
-        next(bs);
-    } else {
-        return bs;
-    }
-};
 
 export default [
     getInitData,

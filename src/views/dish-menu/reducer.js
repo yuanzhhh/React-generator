@@ -22,5 +22,5 @@ const addDishNums = (state, { payload }) => {
 
 export default createReducer(initState, {
     ADD_DISH_NUM: addDishNum,
-    ADD_DISH_NUMs: addDishNums,
+    ADD_DISH_NUMS: addDishNums,
 });

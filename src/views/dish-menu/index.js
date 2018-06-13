@@ -9,7 +9,6 @@ import composeAction from '../../components/composeAction';
 import initDidMountList from './initDidMountList';
 
 import './dist-menu.scss';
-
 const composeProps = composeAction(initDidMountList, dispatchToProps);
 
 @connect(stateToProps, composeProps)
@@ -31,9 +30,7 @@ export default class DishMenu extends BaseComponent {
   }
 
   componentDidMount() {
-    console.log(this.props.getInitData, '@@@');
-
-    this.props.getInitData('你好');
+    this.props.getInitData();
     
     this.props.addDishNum();
   }
