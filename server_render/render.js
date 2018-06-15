@@ -4,6 +4,7 @@ const ReactDOM = require('react-dom/server');
 const minify = require('html-minifier').minify;
 const matchRoutes = require('react-router-config').matchRoutes;
 const { getBundles } = require('react-loadable/webpack');
+const { compose } = require('redux');
 
 const config = require('../config');
 const readFile = require('./readFile');
@@ -23,7 +24,9 @@ module.exports = async (ctx, next) => {
     const store = ssrModule.createStore();
 
     if (matchRoute[0].route.init) {
-        await matchRoute[0].route.init()(store.dispatch);
+        const initPipe = compose(...matchRoute[0].route.init);
+        
+        await initPipe()(store.dispatch);
     }
 
     const modules = [];
