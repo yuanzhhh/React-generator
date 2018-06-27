@@ -16,10 +16,13 @@ React-generator client or ssr for development
 ## Usage
 ```sh
 ## Installation
-$ npm install -g react-g-cli
 
-## Quick start
+$ npm install -g koa-generator
+
+## start
 $ react-g init "project name"
+
+$ cd "project name" && npm install
 
 # Develop for client
 $ npm run dev
