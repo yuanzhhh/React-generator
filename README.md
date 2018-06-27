@@ -14,11 +14,15 @@ React-generator client or ssr for development
 * Basic code specification complies with Airbnb
 
 ## Usage
-```
-# Install
-npm i -g react-g-cli
-react-g init "project name"
-cd "project name" && npm install
+```sh
+## Installation
+
+$ npm install -g koa-generator
+
+## start
+$ react-g init "project name"
+
+$ cd "project name" && npm install
 
 # Develop for client
 npm run dev
