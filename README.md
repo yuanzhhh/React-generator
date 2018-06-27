@@ -15,15 +15,14 @@ React-generator client or ssr for development
 
 ## Usage
 ```
-# clone
-git clone https://github.com/yuanzhhh/React-generator
+# Install
+npm i -g react-g-cli
+react-g init "project name"
+cd "project name" && npm install
 
-# install
-cd React-generator && npm install
-
-# dev for client
+# Develop for client
 npm run dev
 
-# dev for ssr
+# Develop for ssr
 npm run devs
 ```
