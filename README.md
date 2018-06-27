@@ -16,7 +16,6 @@ React-generator client or ssr for development
 ## Usage
 ```sh
 ## Installation
-
 $ npm install -g koa-generator
 
 ## start
