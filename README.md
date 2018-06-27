@@ -21,7 +21,6 @@ $ npm install -g koa-generator
 
 ## start
 $ react-g init "project name"
-
 $ cd "project name" && npm install
 
 # Develop for client
