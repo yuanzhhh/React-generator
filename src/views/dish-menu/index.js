@@ -31,8 +31,6 @@ export default class DishMenu extends BaseComponent {
 
   componentDidMount() {
     this.props.getInitData();
-    
-    this.props.addDishNum();
   }
 
   render () {

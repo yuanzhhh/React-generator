@@ -1,8 +1,3 @@
-const addDishNum = () => dispatch => dispatch({
-    type: 'ADD_DISH_NUMS',
-    payload: 'asdww',
-});
-
 const asyncTestFun = str => new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve(str);
@@ -20,5 +15,4 @@ const getInitData = () => async dispatch => {
 
 export default [
     getInitData,
-    addDishNum,
 ];
