@@ -22,8 +22,8 @@ $ npm install -g koa-generator
 $ react-g init "project name"
 
 # Develop for client
-npm run dev
+$ npm run dev
 
 # Develop for ssr
-npm run devs
+$ npm run devs
 ```
