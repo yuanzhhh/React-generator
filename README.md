@@ -3,7 +3,7 @@
 ## Intro
 React-generator client or ssr for development
 
-* webpack 4.5
+* webpack 4+
 * koa 2
 * Redux
 * react-router 4
