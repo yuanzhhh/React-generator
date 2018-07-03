@@ -4,13 +4,11 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const I18nPlugin = require('i18n-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const os = require('os');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
-const cnJson = require("./languages/cn.json");
 const config = require('../../config');
 const HappyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length,
@@ -60,8 +58,6 @@ const basePlugins = [
         // 基准值
         VIEWPORT_BASELINE: config.viewportBaseline,
     }),
-
-    new I18nPlugin(cnJson),
 
     // HappyPack
     new HappyPack({

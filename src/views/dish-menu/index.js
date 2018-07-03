@@ -40,7 +40,6 @@ export default class DishMenu extends BaseComponent {
       <div className="react-generator">
         <p>{ dishNum }</p>
         <span onClick={this.onClick}>
-        { __("你好 世界") }
         </span>
         <h1>
           React-generator
