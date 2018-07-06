@@ -8,7 +8,6 @@ const { compose } = require('redux');
 
 const config = require('../config');
 const readFile = require('./readFile');
-const serverThunk = require('./serverThunk');
 
 const NODE_ENV = process.env.NODE_ENV;
 
