@@ -2,7 +2,7 @@ import Loadable from 'react-loadable';
 
 
 import loading from '@/components/loadableLoading';
-import initDid from './initDidMountList';
+import { action, initType } from './initDidMountList';
 
 const DishMenu = Loadable({
     loader: () => import('./'),
@@ -12,6 +12,6 @@ const DishMenu = Loadable({
 export default {
     path: '/DishMenu',
     component: DishMenu,
-    initType: 'sequential',
-    init: initDid,
+    initList: action,
+    initType,
 }

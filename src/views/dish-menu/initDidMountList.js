@@ -29,8 +29,11 @@ const getTest2 = (y) => dispatch => {
     });
 }
 
-export default [
-    getInitData,
-    getTest,
-    getTest2,
-];
+export default {
+    action:[
+        getInitData,
+        getTest,
+        getTest2,
+    ],
+    initType: 'sequential',
+}

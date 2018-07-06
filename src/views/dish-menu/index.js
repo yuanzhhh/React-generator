@@ -7,11 +7,11 @@ import wrapDidMount from '@/wrapDidMount';
 import dispatchToProps from './dispatchToProps';
 import stateToProps from './stateToProps';
 import composeAction from '../../components/composeAction';
-import initDidMountList from './initDidMountList';
+import { action, initType } from './initDidMountList';
 
 import './dist-menu.scss';
 
-const composeProps = composeAction(initDidMountList, dispatchToProps);
+const composeProps = composeAction(action, dispatchToProps);
 
 @connect(stateToProps, composeProps)
 export default class DishMenu extends BaseComponent {
@@ -31,7 +31,7 @@ export default class DishMenu extends BaseComponent {
     console.log(this.props.dishNum);
   }
 
-  @wrapDidMount(initDidMountList, 'sequential')
+  @wrapDidMount(action, initType)
   componentDidMount() {
 
   }

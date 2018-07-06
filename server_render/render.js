@@ -22,10 +22,10 @@ module.exports = async (ctx, next) => {
 
     const store = ssrModule.createStore();
  
-    const { initType, init } = matchRoute[0].route;
+    const { initType, initList } = matchRoute[0].route;
 
-    if (init) {
-        const initPipe = execute(initType, ...init);
+    if (initList) {
+        const initPipe = execute(initType, ...initList);
 
         await initPipe(store.dispatch);
     }
