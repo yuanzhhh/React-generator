@@ -30,7 +30,7 @@ const getTest2 = (y) => dispatch => {
 }
 
 export default {
-    action:[
+    initList: [
         getInitData,
         getTest,
         getTest2,
