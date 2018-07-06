@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import BaseComponent from '@/BaseComponent';
+import wrapDidMount from '@/wrapDidMount';
 import dispatchToProps from './dispatchToProps';
 import stateToProps from './stateToProps';
 import composeAction from '../../components/composeAction';
 import initDidMountList from './initDidMountList';
-import wrapDidMount from '@/wrapDidMount';
 
 import './dist-menu.scss';
 

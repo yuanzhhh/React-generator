@@ -12,5 +12,6 @@ const DishMenu = Loadable({
 export default {
     path: '/DishMenu',
     component: DishMenu,
+    initType: 'sequential',
     init: initDid,
 }

@@ -1,13 +1,12 @@
-
 const createMemoryHistory = require('history').createMemoryHistory;
 const ReactDOM = require('react-dom/server');
 const minify = require('html-minifier').minify;
 const matchRoutes = require('react-router-config').matchRoutes;
 const { getBundles } = require('react-loadable/webpack');
-const { compose } = require('redux');
 
 const config = require('../config');
 const readFile = require('./readFile');
+const execute = require('./execute');
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -22,9 +21,11 @@ module.exports = async (ctx, next) => {
     if (!matchRoute.length) return;
 
     const store = ssrModule.createStore();
+ 
+    const { initType, init } = matchRoute[0].route;
 
-    if (matchRoute[0].route.init) {
-        const initPipe = compose(...matchRoute[0].route.init);
+    if (init) {
+        const initPipe = execute(initType, ...init);
 
         await initPipe(store.dispatch);
     }

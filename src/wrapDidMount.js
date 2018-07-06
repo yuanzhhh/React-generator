@@ -4,8 +4,8 @@ export default (initActionList, type) => (target, key, descriptor) => {
     }
 
     async function sequential () {
-        for (let i = 0; i < initActionList.length; i++) {
-            await this.props[initActionList[i].name]();
+        for (const fun of initActionList) {
+            await this.props[fun.name]();
         }
     }
     
