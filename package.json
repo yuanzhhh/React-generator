@@ -9,7 +9,8 @@
     "dev:ssr": "better-npm-run dev-ssr",
     "clean": "rimraf dll dist bundle",
     "commit": "npm-run-all -s git-commit",
-    "git-commit": "git cz"
+    "git-commit": "git cz",
+    "nview": "node ./createView.js"
   },
   "betterScripts": {
     "dev-client": {
