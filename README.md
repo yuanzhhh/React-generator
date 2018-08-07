@@ -21,9 +21,9 @@ $ npm install -g react-g-cli
 ## Quick start
 $ react-g init "project name"
 
-# Develop for client
+# Develop for CSR
 $ npm run dev
 
-# Develop for ssr
+# Develop for SSR
 $ npm run devs
 ```
