@@ -1,7 +1,7 @@
 {
-  "name": "react-generator",
+  "name": "{{name}}",
   "version": "2.1.1",
-  "description": "React-generator client or ssr for development",
+  "description": "{{description}}",
   "scripts": {
     "dev": "npm-run-all -s clean dev:client",
     "devs": "npm-run-all -s clean dev:ssr",
@@ -152,7 +152,7 @@
       "type": "git",
       "url": "https://github.com/yuanzhhh/React-generator.git"
     },
-    "author": "evan yuanzh <evan.yuanzh@gmail.com> (https://github.com/yuanzhhh)",
+    "author": "{{author}}",
     "homepage": "https://github.com/yuanzhhh/React-generator"
   }
 }
