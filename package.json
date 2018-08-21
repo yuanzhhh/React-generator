@@ -1,7 +1,13 @@
 {
   "name": "{{name}}",
-  "version": "2.1.1",
   "description": "{{description}}",
+  "author": "{{author}}",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuanzhhh/React-generator.git"
+  },
+  "homepage": "https://github.com/yuanzhhh/React-generator",
+  "version": "2.1.1",
   "scripts": {
     "dev": "npm-run-all -s clean dev:client",
     "devs": "npm-run-all -s clean dev:ssr",
@@ -147,12 +153,6 @@
     },
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/yuanzhhh/React-generator.git"
-    },
-    "author": "{{author}}",
-    "homepage": "https://github.com/yuanzhhh/React-generator"
+    }
   }
 }
