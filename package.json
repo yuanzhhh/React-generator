@@ -1,7 +1,7 @@
 {
   "name": "react-generator",
   "description": "React-generator client or ssr for development",
-  "author": "evan yuanzh <evan.yuanzh@gmail.com> (https://github.com/yuanzhhh)",
+  "author": "evan yuanzh <evan.yuanzh@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/yuanzhhh/React-generator.git"
