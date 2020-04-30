@@ -10,7 +10,15 @@ module.exports = {
 
     resolve: {
         // 自动解析确定的扩展
-        extensions: [".js", ".jsx", ".json"],
+        extensions: [
+            '.js',
+            '.jsx',
+            '.json',
+            '.ts',
+            '.tsx',
+            '.css',
+            '.less',
+        ],
 
         // 根目录别名
         alias: {
@@ -19,14 +27,13 @@ module.exports = {
     },
 
     module: {
-        rules: loaders.rules,
+        rules: loaders,
     },
 
     plugins:[
-        new loaders.prep.ExtractTextPlugin({
-            filename: 'assets/css/[name].style.css',
-            allChunks: true,
-            disable: SERVICE_STATE.__DEV__ && SERVICE_STATE.__BUILD_TYPE__ === 'client',
-        })
+        new webpack.IgnorePlugin(/\.\/locale/, /moment/),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(infoConf.STATUS.__ENV__),
+        }),
     ],
 };

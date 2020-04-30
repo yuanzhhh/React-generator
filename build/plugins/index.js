@@ -4,8 +4,9 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const os = require('os');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
@@ -13,6 +14,8 @@ const config = require('../../config');
 const HappyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length,
 });
+
+const { PATH } = process.env.SETTING;
 
 // 客户端使用的插件
 const windowPlugin = [
@@ -38,6 +41,14 @@ const baseDevPlugins = [
 
     // 跳过错误输出
     new webpack.NoEmitOnErrorsPlugin(),
+
+    new ForkTsCheckerWebpackPlugin({
+        async: true,
+        tsconfig: path.join(PATH.root, 'tsconfig.json'),
+        checkSyntacticErrors: true,
+        memoryLimit: 4096,
+        silent: false,
+    }),
 ]
 
 const basePlugins = [
@@ -125,7 +136,13 @@ exports.devClientPlugins = [
     }, {
         reload: false,
     }),
+
+    new ForkTsCheckerNotifierWebpackPlugin({
+        excludeWarnings: true,
+        skipSuccessful: true,
+    }),
 ]
+
 
 exports.devSsrClientPlugins = [
     ...windowDev,
