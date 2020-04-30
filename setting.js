@@ -17,6 +17,6 @@ module.exports = {
         dist: path.join(root, 'dist'),
         src: path.join(root, 'src'),
         dll: path.join(root, 'dll'),
-        entryIndex: path.join(root, 'src/index.tsx'),
+        entryIndex: path.join(root, 'src/main.tsx'),
     }
 }
