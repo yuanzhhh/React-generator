@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import BaseComponent from '@/BaseComponent';
 import wrapDidMount from '@/wrapDidMount';
@@ -8,6 +7,7 @@ import dispatchToProps from './dispatchToProps';
 import stateToProps from './stateToProps';
 import composeAction from '../../components/composeAction';
 import initDidMountList from './initDidMountList';
+import connect from '../../connect';
 
 import './dist-menu.scss';
 
@@ -29,7 +29,7 @@ export default class DishMenu extends BaseComponent {
   }
 
   onClick() {
-    console.log(this.props.dishNum);
+    console.log((this.props as any).dishNum);
   }
 
   @wrapDidMount(initList, initType)
@@ -38,8 +38,8 @@ export default class DishMenu extends BaseComponent {
   }
 
   render () {
-    const { dishNum } = this.props;
-    
+    const { dishNum } = this.props as any;
+
     return (
       <div className="react-generator">
         <p>{ dishNum }</p>

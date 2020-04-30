@@ -1,10 +1,10 @@
-const asyncTestFun = str => new Promise((resolve, reject) => {
+const asyncTestFun = str => new Promise((resolve) => {
     setTimeout(() => {
         resolve(str);
     }, 16);
 });
 
-const getInitData = (y) => async dispatch => {
+const getInitData = () => async dispatch => {
     const getData = await asyncTestFun('初始化成功');
  
     dispatch({
@@ -13,7 +13,7 @@ const getInitData = (y) => async dispatch => {
     });
 }
 
-const getTest = (y) => async dispatch => {
+const getTest = () => async dispatch => {
     const getData = await asyncTestFun('初始化成功');
 
     dispatch({
@@ -22,7 +22,7 @@ const getTest = (y) => async dispatch => {
     });
 }
 
-const getTest2 = (y) => dispatch => {
+const getTest2 = () => dispatch => {
     dispatch({
         type: 'ADD_DISH_NUM',
         payload: 'Done!',
