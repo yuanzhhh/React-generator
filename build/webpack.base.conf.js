@@ -3,13 +3,9 @@ const webpack = require('webpack');
 const loaders = require('./loaders');
 const config = require('../config');
 
-const { SERVICE_STATE, path: configPath } = config;
-
-const devtool = SERVICE_STATE.__DEV__ ? 'cheap-module-eval-source-map' : 'cheap-module-source-map';
+const { path: configPath } = config;
 
 module.exports = {
-    devtool,
-
     resolve: {
         // 自动解析确定的扩展
         extensions: [
@@ -21,17 +17,14 @@ module.exports = {
             '.css',
             '.less',
         ],
-
-        // 根目录别名
         alias: {
             "@": configPath.srcPath
-        }
+        },
+        modules: [configPath.srcPath, 'node_modules'],
     },
-
     module: {
         rules: loaders,
     },
-
     plugins:[
         new webpack.IgnorePlugin(/\.\/locale/, /moment/),
         new webpack.DefinePlugin({

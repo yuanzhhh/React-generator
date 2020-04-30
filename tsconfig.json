@@ -1,6 +1,44 @@
 {
+    "compileOnSave": false,
     "compilerOptions": {
+        "skipDefaultLibCheck": false,
+        "skipLibCheck": true,
         "experimentalDecorators": true,
-        "allowJs": true
-    }
+        "reactNamespace": "React",
+        "jsx": "react",
+        "baseUrl": "./src",
+        "moduleResolution": "node",
+        "target": "es2017",
+        "module": "esNext",
+        "noImplicitThis": false,
+        "strict": false,
+        "strictNullChecks": true,
+        "noImplicitAny": false,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": false,
+        "allowJs": false,
+        "rootDir": "src",
+        "lib": [
+            "dom",
+            "es5",
+            "es6",
+            "es2018.promise"
+        ],
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "paths": {
+            "@/*" :["./*"]
+        }
+    },
+    "include": [
+        "./src"
+    ],
+    "exclude": [
+        "node_modules",
+        "build",
+        "dist",
+        "__tests__",
+        "dll"
+    ],
+    "types": ["typePatches"]
 }

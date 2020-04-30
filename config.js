@@ -9,9 +9,9 @@ const __PROD__ = (env.NODE_ENV === 'production');
 const __BUILD_TYPE__ = env.BUILD_TYPE;
 const __BUILD_PATH__ = env.BUILD_PATH;
 
-const ROOT_PATH = path.resolve(__dirname);
+const ROOT_PATH = path.resolve(__dirname, './');
 const SRC_PATH = path.join(ROOT_PATH, 'src');
-const ENTRY_PATH = path.join(ROOT_PATH, 'src', 'main.tsx');
+const ENTRY_PATH = path.join(ROOT_PATH, 'src/main.tsx');
 const STATIC_PATH = path.join(ROOT_PATH, 'static');
 const DIST_PATH = path.join(ROOT_PATH, 'dist');
 const BUNDLE_PATH = path.join(ROOT_PATH, 'bundle');

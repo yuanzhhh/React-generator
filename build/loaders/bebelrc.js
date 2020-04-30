@@ -16,7 +16,7 @@ module.exports = {
         'dynamic-import-webpack',
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
         'react-hot-loader/babel',
-        ['import', { libraryName: 'antd-mobile', style: 'css' }],
+        // ['import', { libraryName: 'antd-mobile', style: 'css' }],
         [
             '@babel/plugin-transform-runtime',
             {

@@ -17,13 +17,11 @@ module.exports = {
             configPath.entryPath,
         ],
     },
-
     output: {
         path: configPath.bundlePath,
         publicPath: configPath.publicPath,
         filename: 'assets/[name].bundle.js',
         chunkFilename: 'assets/[id].[name].bundle.js',
     },
-
     plugins: SERVICE_STATE.__BUILD_TYPE__ === 'client' ? bundleClientPlugins : bundleSsrPlugins,
 };
