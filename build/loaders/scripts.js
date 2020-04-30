@@ -1,9 +1,11 @@
 const path = require('path');
 const threadLoader = require('thread-loader');
 
-const infoConf = require('../../infoConf');
-const env = process.env.SETTING.ENV;
+const babelrc = require('./bebelrc');
+const setting = require('../../setting');
 const osSize = require('os').cpus().length;
+
+const { ENV: env, PATH } = setting;
 
 const threadLoaderOpts = {
     workers:  env === 'production' ? osSize : osSize - 1,
@@ -43,7 +45,7 @@ module.exports = [{
                     cacheDirectory: true,
                     babelrc: false,
                 },
-                infoConf.BABELRC
+                babelrc
             ),
         },
         {
@@ -55,8 +57,8 @@ module.exports = [{
             },
         },
     ],
-    include: infoConf.PATH.src,
-    exclude: path.join(infoConf.PATH.root, 'node_modules'),
+    include: PATH.src,
+    exclude: path.join(PATH.root, 'node_modules'),
 }, {
     test: [/\.(js|jsx)$/],
     use: {
@@ -66,9 +68,9 @@ module.exports = [{
                 cacheDirectory: true,
                 babelrc: false,
             },
-            infoConf.BABELRC
+            babelrc
         ),
     },
-    include: infoConf.PATH.src,
-    exclude: path.join(infoConf.PATH.root, 'node_modules'),
+    include: PATH.src,
+    exclude: path.join(PATH.root, 'node_modules'),
 }];

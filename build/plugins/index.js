@@ -1,21 +1,17 @@
+const path = require('path');
 const webpack = require('webpack');
 const NyanProgressPlugin = require('nyan-progress-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
-const os = require('os');
 const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
+const setting = require('../../setting');
 const config = require('../../config');
-const HappyThreadPool = HappyPack.ThreadPool({
-    size: os.cpus().length,
-});
 
-const { PATH } = process.env.SETTING;
+const { PATH } = setting;
 
 // 客户端使用的插件
 const windowPlugin = [
@@ -69,31 +65,6 @@ const basePlugins = [
         // 基准值
         VIEWPORT_BASELINE: config.viewportBaseline,
     }),
-
-    // HappyPack
-    new HappyPack({
-        id: 'scripts',
-        threadPool: HappyThreadPool,
-        loaders: ['babel-loader']
-    }),
-
-    new HappyPack({
-        id: 'eslint-scripts',
-        threadPool: HappyThreadPool,
-        loaders: ['eslint-loader']
-    }),
-
-    new HappyPack({
-        id: 'styles-sass',
-        threadPool: HappyThreadPool,
-        loaders: ['css-loader', 'sass-loader']
-    }),
-
-    new HappyPack({
-        id: 'styles',
-        threadPool: HappyThreadPool,
-        loaders: ['css-loader']
-    }),
 ]
 
 const windowDev = [
@@ -105,9 +76,6 @@ const windowDev = [
 ]
 
 exports.devClientPlugins = [
-    // HMR
-    new webpack.HotModuleReplacementPlugin(),
-
     ...windowDev,
 
     // html 导入 dll js
@@ -126,16 +94,6 @@ exports.devClientPlugins = [
 
     // 更新组件时在控制台输出组件的路径而不是数字ID
     new webpack.NamedModulesPlugin(),
-
-    new BrowserSyncPlugin({
-        host: config.host,
-        port: config.proxyPort,
-        proxy: `http://${config.host}:${config.port}`,
-        logConnections: false,
-        notify: false,
-    }, {
-        reload: false,
-    }),
 
     new ForkTsCheckerNotifierWebpackPlugin({
         excludeWarnings: true,

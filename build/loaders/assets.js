@@ -1,6 +1,6 @@
 const path = require('path');
 
-const infoConf = process.env.SETTING;
+const infoConf = require('../../setting');
 
 module.exports = [{
     test: [/\.bmp$/, /\.jpe?g$/, /\.png$/],

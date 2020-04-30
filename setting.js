@@ -2,7 +2,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, './');
 
-process.env.SETTING = {
+module.exports = {
     ENV: process.env.NODE_ENV,
     SERVER: {
         http: {

@@ -13,7 +13,6 @@ module.exports = {
     entry: {
         app: [
             'eventsource-polyfill',
-            'babel-polyfill',
             'viewport-units-buggyfill',
             configPath.entryPath,
         ],

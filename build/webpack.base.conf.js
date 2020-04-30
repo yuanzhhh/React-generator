@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 const loaders = require('./loaders');
 const config = require('../config');
 
@@ -33,7 +35,7 @@ module.exports = {
     plugins:[
         new webpack.IgnorePlugin(/\.\/locale/, /moment/),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(infoConf.STATUS.__ENV__),
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         }),
     ],
 };

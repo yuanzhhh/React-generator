@@ -1,7 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const env = process.env.SETTING.ENV;
+const setting = require('../../setting');
+const env = setting.ENV;
 
 const lessUse = [{
     loader: 'css-loader',
