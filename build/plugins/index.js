@@ -48,12 +48,7 @@ const baseDevPlugins = [
 ]
 
 const basePlugins = [
-    // 编译进度
-    new webpack.ProgressPlugin(),
-
-    // 友好报错信息
-    new FriendlyErrorsWebpackPlugin(),
-
+    new webpack.IgnorePlugin(/\.\/locale/, /moment/),
     // 全局变量
     new webpack.DefinePlugin({
         'process.env': {
@@ -65,6 +60,12 @@ const basePlugins = [
         // 基准值
         VIEWPORT_BASELINE: config.viewportBaseline,
     }),
+
+    // 编译进度
+    new webpack.ProgressPlugin(),
+
+    // 友好报错信息
+    new FriendlyErrorsWebpackPlugin(),
 ]
 
 const windowDev = [

@@ -8,7 +8,7 @@ export default (state = {}) => {
         applyMiddleware(thunk),
     ];
 
-  if ((window as any).SERVICE_STATE.__DEV__ && typeof window !== 'undefined' && (window as any).__REDUX_DEVTOOLS_EXTENSION__) {
+  if (SERVICE_STATE.__DEV__ && typeof window !== 'undefined' && (window as any).__REDUX_DEVTOOLS_EXTENSION__) {
     composeList.push((window as any).__REDUX_DEVTOOLS_EXTENSION__());
     };
 

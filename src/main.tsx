@@ -2,7 +2,7 @@ import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import fastClick from 'fastclick';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import Loadable from 'react-loadable';
 
 import createStore from './createStore';
@@ -11,7 +11,10 @@ import createApp from './createApp';
 // 移除click 30ms延迟
 fastClick.attach(document.body);
 
-if ((window as any).SERVICE_STATE.__DEV__) {
+const serviceState = SERVICE_STATE;
+const initState = (window as any).__INIT_STATE__;
+
+if (serviceState.__DEV__) {
   // 功能少
   // new (require('vconsole'));
 
@@ -26,17 +29,17 @@ if ((window as any).SERVICE_STATE.__DEV__) {
 let DOMRender: any;
 let App: any;
 
-if ((window as any).__INIT_STATE__) {
+if (initState) {
   DOMRender = hydrate;
 
-  App = createApp(createBrowserHistory(), createStore((window as any).__INIT_STATE__));
+  App = createApp(createBrowserHistory(), createStore(initState));
 } else {
   DOMRender = render;
 
   App = createApp(createBrowserHistory(), createStore());
 }
 
-const renderComponent = Component => (window as any).SERVICE_STATE.__DEV__ && (window as any).SERVICE_STATE.__BUILD_TYPE__ === 'client' ? (
+const renderComponent = Component => serviceState.__DEV__ && serviceState.__BUILD_TYPE__ === 'client' ? (
   <AppContainer>
     <Component />
   </AppContainer>
@@ -52,7 +55,7 @@ if ((module as any).hot) {
   (module as any).hot.accept('./createApp', () => { reactRenderDom(App) });
 }
 
-if (((window as any).SERVICE_STATE).__BUILD_TYPE__ === 'ssr') {
+if (serviceState.__BUILD_TYPE__ === 'ssr') {
   (window as any).main = () => reactRenderDom(App);
 } else {
   reactRenderDom(App);
