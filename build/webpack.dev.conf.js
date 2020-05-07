@@ -1,9 +1,4 @@
-const path = require('path');
 const config = require('../config');
-const setting = require('../setting');
-
-const { PATH } = setting;
-
 const {
     devClientPlugins,
     devSsrClientPlugins
@@ -40,6 +35,5 @@ module.exports = {
         chunkFilename: 'assets/[id].[name].bundle.js',
         publicPath: '/',
     },
-
     plugins: SERVICE_STATE.__BUILD_TYPE__ === 'client' ? devClientPlugins : devSsrClientPlugins,
 };

@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+
 const config = require('../config');
 const packageDev = require('../package.json');
 

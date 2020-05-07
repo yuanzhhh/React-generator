@@ -1,11 +1,11 @@
 const Koa = require('koa');
 const middleware = require('koa-webpack');
 const webpack = require('webpack');
+
 const config = require('../../config');
 const webpackConf = require('../webpack.config');
 
 const compilerRes = webpack(webpackConf);
-
 const app = new Koa();
 
 app.use(require('koa-static')(config.path.static), {

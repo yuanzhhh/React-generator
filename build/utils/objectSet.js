@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * objData 数据对象
  * path 路径
  * value 值

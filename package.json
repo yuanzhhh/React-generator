@@ -9,8 +9,8 @@
     "homepage": "https://github.com/yuanzhhh/React-generator",
     "version": "2.1.1",
     "scripts": {
-        "dev": "npm-run-all -s clean dev:client",
-        "devs": "npm-run-all -s clean dev:ssr",
+        "scr": "npm-run-all -s clean dev:client",
+        "ssr": "npm-run-all -s clean dev:ssr",
         "dev:client": "better-npm-run dev-client",
         "dev:ssr": "better-npm-run dev-ssr",
         "clean": "rimraf dll dist bundle",
@@ -20,7 +20,7 @@
     },
     "betterScripts": {
         "dev-client": {
-            "command": "export HOST=$(ifconfig | grep broadcast | awk '{print $2}') && webpack --config build/webpack.dll.conf.js && node build/server/index.js",
+            "command": "export HOST=$(ifconfig | grep broadcast | awk '{print $2}') && webpack --config build/webpack.dll.conf.js && nodemon build/server/index.js",
             "env": {
                 "NODE_ENV": "development",
                 "BUILD_TYPE": "client"
@@ -115,6 +115,7 @@
         "lint-staged": "^10.2.1",
         "mini-css-extract-plugin": "^0.9.0",
         "node-sass": "^4.14.0",
+        "nodemon": "^2.0.3",
         "npm-run-all": "^4.1.5",
         "nyan-progress-webpack-plugin": "^1.2.0",
         "opn": "^6.0.0",
@@ -153,8 +154,6 @@
         "html-minifier": "^4.0.0",
         "immutability-helper": "^3.0.2",
         "koa": "^2.11.0",
-        "koa-router": "^8.0.8",
-        "koa-static": "^5.0.0",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",

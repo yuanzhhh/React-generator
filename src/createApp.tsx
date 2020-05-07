@@ -4,7 +4,6 @@ import Loadable from 'react-loadable';
 
 import Router from './router';
 
-
 export default (history, store, isSsr?, modules?) => () => (
     isSsr ? (
         <Provider store={store}>

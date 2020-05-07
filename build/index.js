@@ -5,8 +5,8 @@ const webpackConfig = require('./webpack.config');
 
 const compiler = webpack(webpackConfig);
 
-module.exports = (creatApp) =>
-    koaWebpack({
+module.exports = async (creatApp) => {
+    const wpResult = await koaWebpack({
         compiler,
         devMiddleware: {
             quiet: true,
@@ -18,4 +18,7 @@ module.exports = (creatApp) =>
             },
             publicPath: webpackConfig.output.publicPath,
         },
-    }).then(creatApp);
+    });
+
+    creatApp(wpResult);
+}
