@@ -148,12 +148,14 @@
         "why-did-you-update": "^1.0.8"
     },
     "dependencies": {
+        "@koa/router": "^8.0.8",
         "axios": "^0.19.2",
         "fastclick": "^1.0.6",
         "history": "^4.10.1",
         "html-minifier": "^4.0.0",
         "immutability-helper": "^3.0.2",
         "koa": "^2.11.0",
+        "koa-static": "^5.0.0",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",

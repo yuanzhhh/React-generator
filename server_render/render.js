@@ -17,11 +17,11 @@ const htmlPath = `${NODE_ENV === 'development' ? config.path.distPath : config.p
 
 module.exports = async (ctx, next) => {
     const matchRoute = matchRoutes(ssrModule.routers, ctx.originalUrl);
-    
+
     if (!matchRoute.length) return;
 
     const store = ssrModule.createStore();
- 
+
     const { initType, initList } = matchRoute[0].route;
 
     if (initList) {

@@ -1,4 +1,4 @@
-const KoaRouter = require('koa-router');
+const KoaRouter = require('@koa/router');
 
 const render = require('./render');
 
