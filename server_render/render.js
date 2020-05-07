@@ -15,7 +15,7 @@ const stats = require(`${NODE_ENV === 'development' ? config.path.distPath : con
 
 const htmlPath = `${NODE_ENV === 'development' ? config.path.distPath : config.path.bundlePath}/index.html`;
 
-module.exports = async (ctx, next) => {
+module.exports = async ctx => {
     const matchRoute = matchRoutes(ssrModule.routers, ctx.originalUrl);
 
     if (!matchRoute.length) return;
@@ -32,11 +32,13 @@ module.exports = async (ctx, next) => {
 
     const modules = [];
 
-    const renderReact = ssrModule.createApp(createMemoryHistory({
+    const history = createMemoryHistory({
         initialEntries: [
             ctx.originalUrl
         ],
-    }), store, true, modules);
+    });
+
+    const renderReact = ssrModule.createApp(history, store, modules);
 
     const renderReactStr = ReactDOM.renderToString(renderReact());
 
@@ -54,7 +56,7 @@ module.exports = async (ctx, next) => {
         <script> window.main(); </script>
         </body>
     `);
-    
+
     const miniHtml = minify(renderHtml, {
         removeAttributeQuotes: true,
         collapseBooleanAttributes: true,

@@ -4,11 +4,11 @@ import Loadable from 'react-loadable';
 
 import Router from './router';
 
-export default (history, store, isSsr?, modules?) => () => (
-    isSsr ? (
+export default (history, store, modules?) => () => (
+  SERVICE_STATE.__BUILD_TYPE__ === 'ssr' ? (
         <Provider store={store}>
             <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-                <Router history={history}/>
+              <Router history={history}/>
             </Loadable.Capture>
         </Provider>
     ) : (

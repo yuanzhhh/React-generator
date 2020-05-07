@@ -44,6 +44,7 @@ export default class DishMenu extends BaseComponent {
       <div className="react-generator">
         <p>{ dishNum }</p>
         <span onClick={this.onClick}>
+          11111
         </span>
         <h1>
           React-generator

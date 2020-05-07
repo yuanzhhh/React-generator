@@ -1,14 +1,17 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
+  Router,
   Route,
   Link,
 } from 'react-router-dom';
 
 import routers from './routers';
 
-export default _props => (
-  <Router>
+const Routers: React.ComponentClass<any> = SERVICE_STATE.__BUILD_TYPE__ === 'ssr' ? Router : BrowserRouter;
+
+export default (props) => (
+  <Routers {...props}>
     <div>
       <ul>
         <li><Link to="/">index</Link></li>
@@ -20,5 +23,5 @@ export default _props => (
         ))
       }
     </div>
-  </Router>
+  </Routers>
 );
