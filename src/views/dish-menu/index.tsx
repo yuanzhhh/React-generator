@@ -9,7 +9,7 @@ import composeAction from '../../components/composeAction';
 import initDidMountList from './initDidMountList';
 import connect from '../../connect';
 
-import './dist-menu.scss';
+import './dist-menu.less';
 
 const { initList, initType } = initDidMountList;
 const composeProps = composeAction(initList, dispatchToProps);

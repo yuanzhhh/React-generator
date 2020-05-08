@@ -5,19 +5,12 @@ const setting = require('../../setting');
 const env = setting.ENV;
 
 const lessUse = [{
-    loader: 'css-loader',
-    options: {
-        importLoaders: 1,
-    },
-}, {
     loader: 'postcss-loader',
     options: {
         config: {
-            path: path.resolve(__dirname, '../postcss.config.js'),
+            path: path.resolve(__dirname, './postcss.config.js'),
         },
     },
-}, {
-    loader: 'less-loader',
 }];
 
 const less = {
@@ -27,9 +20,18 @@ const less = {
         options: {
             hmr: env === 'development',
         },
-    }] : [{
-        loader: 'style-loader',
-    }]).concat(lessUse),
+    }] : [
+        // 'style-loader',
+        'isomorphic-style-loader',
+        {
+            loader: 'css-loader',
+            options: {
+                importLoaders: 1,
+            },
+        },
+        ...lessUse,
+        'less-loader',
+    ]),
 };
 
 const css = {
@@ -39,10 +41,10 @@ const css = {
         options: {
             hmr: env === 'development',
         },
-    }] : [{
-        loader: 'style-loader',
-    }]).concat([
+    }] : [
+        'style-loader',
         'css-loader',
+        ...lessUse,
     ]),
 };
 
