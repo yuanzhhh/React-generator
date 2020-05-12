@@ -3,15 +3,12 @@
 ## Intro
 React-generator client or ssr for development
 
-* webpack 4+
+* webpack 4
 * koa 2
 * Redux
 * react-router 4
 * sass
-* px compile for vw
 * Router dynamic
-* String transcoding internationalization solution (transcode after compilation)
-* Basic code specification complies with Airbnb
 
 ## Usage
 ```sh
@@ -20,6 +17,9 @@ $ npm install -g react-g-cli
 
 ## Quick start
 $ react-g init "project name"
+
+# Install npm packages for china
+$ npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/ & npm i
 
 # Develop for CSR
 $ npm run dev
