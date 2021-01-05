@@ -116,7 +116,7 @@
     "why-did-you-update": "^0.1.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "fastclick": "^1.0.6",
     "history": "^4.7.2",
     "html-minifier": "^3.5.20",
