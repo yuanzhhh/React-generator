@@ -1,5 +1,7 @@
 # React-generator
 
+**🚨 NOTICE: Sorry, I haven't maintained this project for a long time, so this project is for reference and experiment only.**
+
 ## Intro
 React-generator client or ssr for development
 
